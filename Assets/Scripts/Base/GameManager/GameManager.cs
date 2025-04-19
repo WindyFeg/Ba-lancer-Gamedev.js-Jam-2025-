@@ -1,8 +1,12 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public GameBaseState CurrentState { get; private set; }
+    public GameBaseState PreviousState { get; private set; }
 
     private void Awake()
     {
@@ -17,22 +21,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    private void Start()
     {
-        // Initialize game state, load resources, etc.
-        Debug.Log("Game Started");
+        // Initialize the game state to the main menu or any other initial state
+        ChangeState(new MainMenuState());
     }
 
-    public void EndGame()
+    public async void ChangeState(GameBaseState nextState)
     {
-        // Handle game over logic, save state, etc.
-        Debug.Log("Game Over");
+        CurrentState?.ExitState(this);
+
+        PreviousState = CurrentState;
+        CurrentState = nextState;
+        await SwitchScene(nextState);
+        CurrentState.EnterState(this);
     }
 
-    public void RestartGame()
+    private async System.Threading.Tasks.Task SwitchScene(GameBaseState nextState)
     {
-        // Reset game state, reload scene, etc.
-        Debug.Log("Game Restarted");
-    }
+        string sceneName = nextState.StateName switch
+        {
+            "MainMenuState" => "Start",
+            "CharmShopState" => "CharmShop",
+            "GamePlayState" => "GamePlay",
+            _ => throw new ArgumentException("Invalid state name")
+        };
 
+        var sceneLoadOperation = SceneManager.LoadSceneAsync(sceneName);
+        while (!sceneLoadOperation.isDone)
+        {
+            await System.Threading.Tasks.Task.Yield();
+        }
+    }
 }
