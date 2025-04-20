@@ -1,0 +1,98 @@
+{
+    "Monsters": [
+        {
+            "Name": "Monster 1",
+            "Attack": 4,
+            "AttackMin": 1,
+            "AttackMax": 10,
+            "Hp": 7,
+            "HpMin": 1,
+            "HpMax": 10,
+            "Speed": 5,
+            "SpeedMin": 1,
+            "SpeedMax": 10,
+            "Def": 7,
+            "DefMin": 1,
+            "DefMax": 10,
+            "AttackSpeed": 1,
+            "AttackSpeedMin": 1,
+            "AttackSpeedMax": 10,
+            "Range": 5,
+            "RangeMin": 1,
+            "RangeMax": 10,
+            "StatConfig": [
+                {
+                    "PrimaryStat": 0,
+                    "RelatedStats": [
+                        1,
+                        2
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Monster 2",
+            "Attack": 9,
+            "AttackMin": 1,
+            "AttackMax": 10,
+            "Hp": 1,
+            "HpMin": 1,
+            "HpMax": 10,
+            "Speed": 5,
+            "SpeedMin": 1,
+            "SpeedMax": 10,
+            "Def": 5,
+            "DefMin": 1,
+            "DefMax": 10,
+            "AttackSpeed": 1,
+            "AttackSpeedMin": 1,
+            "AttackSpeedMax": 10,
+            "Range": 5,
+            "RangeMin": 1,
+            "RangeMax": 10,
+            "StatConfig": [
+                {
+                    "PrimaryStat": 0,
+                    "RelatedStats": [
+                        1
+                    ]
+                },
+                {
+                    "PrimaryStat": 1,
+                    "RelatedStats": [
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Monster 3",
+            "Attack": 8,
+            "AttackMin": 1,
+            "AttackMax": 10,
+            "Hp": 6,
+            "HpMin": 1,
+            "HpMax": 10,
+            "Speed": 5,
+            "SpeedMin": 1,
+            "SpeedMax": 10,
+            "Def": 5,
+            "DefMin": 1,
+            "DefMax": 10,
+            "AttackSpeed": 1,
+            "AttackSpeedMin": 1,
+            "AttackSpeedMax": 10,
+            "Range": 5,
+            "RangeMin": 1,
+            "RangeMax": 10,
+            "StatConfig": [
+                {
+                    "PrimaryStat": 0,
+                    "RelatedStats": [
+                        1
+                    ]
+                }
+            ]
+        }
+    ]
+}
