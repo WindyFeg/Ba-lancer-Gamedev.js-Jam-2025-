@@ -12,12 +12,12 @@ public class PlayerState : MonoBehaviour
 
     private int currentHealth;
     private float lastAttackTime = -Mathf.Infinity;
-    private PlayerSpine playerSpine;
+    private ModelSpine playerSpine;
 
 
     void Awake()
     {
-        playerSpine = GetComponent<PlayerSpine>();
+        playerSpine = GetComponent<ModelSpine>();
         currentHealth = maxHealth;
     }
 
@@ -52,6 +52,7 @@ public class PlayerState : MonoBehaviour
         foreach (Collider enemy in enemies)
         {
             Debug.Log("Attacking: " + enemy.name);
+            enemy.GetComponent<ModelSpine>().hit_start();
         }
         playerSpine.attack_start();
     }

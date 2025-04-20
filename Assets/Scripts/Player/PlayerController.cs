@@ -12,7 +12,7 @@ namespace Game
 
 
         [SerializeField] public float moveSpeed;
-        private PlayerSpine playerSpine;
+        private ModelSpine playerSpine;
         private Rigidbody rb;
         private float xdir, zdir;
         public static Player instance;
@@ -35,7 +35,7 @@ namespace Game
         }
         private void Start()
         {
-            playerSpine = GetComponent<PlayerSpine>();
+            playerSpine = GetComponent<ModelSpine>();
             rb = gameObject.GetComponent<Rigidbody>();
         }
 
