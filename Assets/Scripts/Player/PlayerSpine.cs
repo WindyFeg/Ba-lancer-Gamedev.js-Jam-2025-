@@ -6,8 +6,6 @@ using UnityEngine;
 
 // using AnimationState = Spine.AnimationState;
 
-namespace aclf.game
-{
 public class ModelSpine : MonoBehaviour, IModelSpine
 {
     Coroutine cur_coroutine;
@@ -120,5 +118,4 @@ public class ModelSpine : MonoBehaviour, IModelSpine
         _cur_state.SetAnimation(0, animName, loop).MixDuration = 0;
         currentAnimName = animName;
     }
-}
 }

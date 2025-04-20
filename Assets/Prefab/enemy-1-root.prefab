@@ -44,14 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58d662b566298b48a84d0541d52cd87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDetectionRange: 10
+  targetDetectionRange: 20
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 768
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  showGizmos: 0
+  showGizmos: 1
 --- !u!1 &1131638724522585617
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc57dd368c6bf9646a5397eafb13a87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 2
-  agentColliderSize: 0.6
+  radius: 8
+  agentColliderSize: 0.5
   showGizmo: 1
 --- !u!1 &2570242252755118469
 GameObject:
@@ -283,7 +283,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &7844883675539007521
 BoxCollider:
@@ -304,7 +304,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 0, z: 4}
+  m_Size: {x: 0, y: 0, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7969714182409412116
 MonoBehaviour:
@@ -328,10 +328,22 @@ MonoBehaviour:
   detectionDelay: 0.05
   aiUpdateDelay: 0.06
   attackDelay: 1
-  attackDistance: 0.5
+  attackDistance: 5
   OnAttackPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6190709582793657395}
+        m_TargetAssemblyTypeName: Agent, Assembly-CSharp
+        m_MethodName: PerformAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnMovementInput:
     m_PersistentCalls:
       m_Calls:
@@ -379,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc2bb2d64a28d74fb10744007242b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 4
+  maxSpeed: 2
   acceleration: 50
   deacceleration: 100
   currentSpeed: 0
@@ -518,11 +530,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f5c11a4e22d4b4aa8dd329613eea61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 2
+  detectionRadius: 8
   layerMask:
     serializedVersion: 2
     m_Bits: 512
-  showGizmos: 0
+  showGizmos: 1
 --- !u!1 &6750361638063535665
 GameObject:
   m_ObjectHideFlags: 0

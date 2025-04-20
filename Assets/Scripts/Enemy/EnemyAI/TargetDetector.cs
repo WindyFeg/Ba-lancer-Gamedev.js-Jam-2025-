@@ -20,7 +20,6 @@ public class TargetDetector : Detector
 
         if (playerColliders.Length > 0)
         {
-            Debug.Log("Player detected");
 
             Transform playerTransform = playerColliders[0].transform;
             Vector3 direction = (playerTransform.position - transform.position).normalized;
@@ -31,6 +30,7 @@ public class TargetDetector : Detector
                 if (((1 << hit.collider.gameObject.layer) & playerLayerMask) != 0)
                 {
                     Debug.DrawRay(transform.position, direction * targetDetectionRange, Color.magenta);
+                    Debug.Log("Player detected");
                     colliders = new List<Transform>() { playerTransform };
                 }
                 else
