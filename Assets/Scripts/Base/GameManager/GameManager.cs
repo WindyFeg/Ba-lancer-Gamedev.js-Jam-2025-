@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,17 +28,25 @@ public class GameManager : MonoBehaviour
         ChangeState(new MainMenuState());
     }
 
-    public async void ChangeState(GameBaseState nextState)
+    public void ChangeState(GameBaseState nextState)
     {
         CurrentState?.ExitState(this);
 
         PreviousState = CurrentState;
         CurrentState = nextState;
-        await SwitchScene(nextState);
-        CurrentState.EnterState(this);
+        StartCoroutine(SwitchScene(nextState));
     }
 
-    private async System.Threading.Tasks.Task SwitchScene(GameBaseState nextState)
+    public MapManager GetMapManager()
+    {
+        if (MapManager.Instance == null)
+        {
+            Debug.LogError("MapManager instance is null. Make sure it is initialized before calling this method.");
+        }
+        return MapManager.Instance;
+    }
+
+    private IEnumerator SwitchScene(GameBaseState nextState)
     {
         string sceneName = nextState.StateName switch
         {
@@ -50,7 +59,9 @@ public class GameManager : MonoBehaviour
         var sceneLoadOperation = SceneManager.LoadSceneAsync(sceneName);
         while (!sceneLoadOperation.isDone)
         {
-            await System.Threading.Tasks.Task.Yield();
+            yield return null;
         }
+
+        CurrentState.EnterState(this);
     }
 }
