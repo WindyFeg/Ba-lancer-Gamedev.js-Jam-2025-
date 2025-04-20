@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace aclf.game
 {
-public class PlayerSpine : MonoBehaviour, IPlayerSpine
+public class ModelSpine : MonoBehaviour, IModelSpine
 {
     Coroutine cur_coroutine;
     bool isAttacking = false;
@@ -66,7 +66,7 @@ public class PlayerSpine : MonoBehaviour, IPlayerSpine
     {
         _cur_state.SetAnimation(0, hit_anim, false).MixDuration = 0;
         yield return new WaitForSeconds(get_duration(hit_anim));
-        _cur_state.SetAnimation(0, down_idle_anim, true);
+        _cur_state.SetAnimation(0, down_idle_anim, true).MixDuration = 0;
     }
 
     IEnumerator play_attack_cr()

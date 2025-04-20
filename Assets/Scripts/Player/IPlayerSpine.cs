@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-  public interface IPlayerSpine { 
+  public interface IModelSpine { 
 
     void up_idle_playing(); 
     void move_up_playing(); 
