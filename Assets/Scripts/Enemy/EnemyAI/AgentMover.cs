@@ -26,7 +26,7 @@ public class AgentMover : MonoBehaviour
     {
         // Only XZ plane movement
         Vector3 flatInput = new Vector3(MovementInput.x, 0f, MovementInput.z);
-        Debug.Log($"Flat Input: {flatInput}");
+
 
         if (flatInput.magnitude > 0 && currentSpeed >= 0)
         {

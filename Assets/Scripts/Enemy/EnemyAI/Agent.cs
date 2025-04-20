@@ -8,10 +8,10 @@ public class Agent : MonoBehaviour
     private AgentMover agentMover;
 
 
-    private Vector2 pointerInput, movementInput;
+    private Vector3 pointerInput, movementInput;
 
     public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
-    public Vector2 MovementInput { get => movementInput; set => movementInput = value; }
+    public Vector3 MovementInput { get => movementInput; set => movementInput = value; }
 
     private void Update()
     {
@@ -34,7 +34,7 @@ public class Agent : MonoBehaviour
 
     private void AnimateCharacter()
     {
-        Vector2 lookDirection = pointerInput - (Vector2)transform.position;
+        // Vector2 lookDirection = pointerInput - (Vector2)transform.position;
         // agentAnimations.RotateToPointer(lookDirection);
         // agentAnimations.PlayAnimation(MovementInput);
     }
