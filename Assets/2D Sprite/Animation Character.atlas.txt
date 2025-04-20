@@ -1,0 +1,107 @@
+Animation Character.png
+size:1986,1031
+filter:Linear,Linear
+pma:true
+Ngang - Cay thuong
+bounds:467,479,309,552
+offsets:439,114,2488,802
+Ngang - Chan phai
+bounds:1494,786,80,76
+offsets:349,126,2488,802
+Ngang - Chan trai
+bounds:1916,261,77,70
+offsets:222,121,2488,802
+rotate:90
+Ngang - Duoi
+bounds:1794,33,184,74
+offsets:59,158,2488,802
+Ngang - Mieng 1
+bounds:746,7,76,21
+offsets:299,324,2488,802
+Ngang - Mieng 2
+bounds:1394,617,245,100
+offsets:209,245,2488,802
+rotate:90
+Ngang - Non
+bounds:1306,31,448,297
+offsets:68,325,2488,802
+rotate:90
+Ngang - Tay ngoai
+bounds:1752,507,110,210
+offsets:92,167,2488,802
+rotate:90
+Ngang - Tay trong 1
+bounds:1394,479,179,138
+offsets:391,214,2488,802
+Ngang - Tay trong 2
+bounds:1603,253,63,76
+offsets:510,210,2488,802
+rotate:90
+Ngang - Than
+bounds:0,4,414,373
+offsets:121,32,2488,802
+rotate:90
+Phia sau - Cay thuong
+bounds:776,479,309,552
+offsets:773,126,2488,802
+Phia sau - Chan phai
+bounds:1494,710,80,76
+offsets:1267,127,2488,802
+Phia sau - Chan trai
+bounds:1916,184,77,70
+offsets:1116,122,2488,802
+rotate:90
+Phia sau - Duoi
+bounds:1573,493,124,179
+offsets:1162,72,2488,802
+rotate:90
+Phia sau - Non
+bounds:746,28,451,280
+offsets:983,326,2488,802
+rotate:90
+Phia sau - Tay ngoai
+bounds:1752,338,191,169
+offsets:952,201,2488,802
+Phia sau - Tay ngoai copy
+bounds:1394,862,191,169
+offsets:1283,201,2488,802
+Phia sau - Than
+bounds:373,4,414,373
+offsets:1039,33,2488,802
+rotate:90
+Phia truoc - Cay thuong
+bounds:1085,479,309,552
+offsets:2016,126,2488,802
+Phia truoc - Chan phai
+bounds:1494,630,80,76
+offsets:1906,127,2488,802
+rotate:90
+Phia truoc - Chan trai
+bounds:1916,107,77,70
+offsets:1755,122,2488,802
+rotate:90
+Phia truoc - Duoi
+bounds:1603,316,122,177
+offsets:1797,134,2488,802
+Phia truoc - Mieng 1
+bounds:822,7,76,21
+offsets:1831,325,2488,802
+Phia truoc - Non
+bounds:1026,28,451,280
+offsets:1622,326,2488,802
+rotate:90
+Phia truoc - Tay ngoai
+bounds:1603,0,191,169
+offsets:1591,201,2488,802
+Phia truoc - Tay ngoai copy
+bounds:1725,169,191,169
+offsets:1922,201,2488,802
+Phia truoc - Tay trong 2
+bounds:1603,177,63,76
+offsets:2053,202,2488,802
+Phia truoc - Than
+bounds:1603,617,414,373
+offsets:1678,33,2488,802
+rotate:90
+Soul
+bounds:0,418,467,613
