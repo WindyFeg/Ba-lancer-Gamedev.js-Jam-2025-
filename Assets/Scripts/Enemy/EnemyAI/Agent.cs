@@ -12,7 +12,11 @@ public class Agent : MonoBehaviour
 
     public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
     public Vector3 MovementInput { get => movementInput; set => movementInput = value; }
-
+    private ModelSpine playerSpine;
+    void Start()
+    {
+        playerSpine = GetComponent<ModelSpine>();
+    }
     private void Update()
     {
         //pointerInput = GetPointerInput();
@@ -24,7 +28,7 @@ public class Agent : MonoBehaviour
 
     public void PerformAttack()
     {
-        // weaponParent.Attack();
+        playerSpine.attack_start();
     }
 
     private void Awake()

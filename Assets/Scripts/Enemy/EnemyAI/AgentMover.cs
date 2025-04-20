@@ -16,17 +16,17 @@ public class AgentMover : MonoBehaviour
 
     private Vector3 oldMovementInput;
     public Vector3 MovementInput { get; set; }
+    private ModelSpine modelSpine; // link to model spine
 
     private void Awake()
     {
+        modelSpine = GetComponentInChildren<ModelSpine>();
         rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
-        // Only XZ plane movement
         Vector3 flatInput = new Vector3(MovementInput.x, 0f, MovementInput.z);
-
 
         if (flatInput.magnitude > 0 && currentSpeed >= 0)
         {
@@ -41,7 +41,50 @@ public class AgentMover : MonoBehaviour
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
 
         Vector3 velocity = oldMovementInput * currentSpeed;
+        rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
 
-        rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z); // maintain Y for gravity
+        // Animation logic
+        PlayAnimationByDirection(flatInput);
+    }
+
+    private void PlayAnimationByDirection(Vector3 direction)
+    {
+        if (modelSpine == null) return;
+
+        if (direction.magnitude <= 0.01f)
+        {
+            // Idle - use last direction to determine which idle anim to play
+            if (Mathf.Abs(oldMovementInput.x) > Mathf.Abs(oldMovementInput.z))
+            {
+                modelSpine.side_idle_playing();
+            }
+            else if (oldMovementInput.z > 0)
+            {
+                modelSpine.up_idle_playing();
+            }
+            else
+            {
+                modelSpine.down_idle_playing();
+            }
+        }
+        else
+        {
+            // Movement animations
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.z))
+            {
+                modelSpine.move_side_playing();
+                modelSpine.direction((int)Mathf.Sign(direction.x));
+            }
+            else if (direction.z > 0)
+            {
+                modelSpine.move_up_playing();
+                modelSpine.direction(1); // facing forward
+            }
+            else
+            {
+                modelSpine.move_down_playing();
+                modelSpine.direction(1); // facing forward
+            }
+        }
     }
 }

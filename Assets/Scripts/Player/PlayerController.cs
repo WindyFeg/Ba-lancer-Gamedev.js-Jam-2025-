@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
-using aclf.game;
 using UnityEngine;
 using UnityEngine.UI;
 namespace Game
