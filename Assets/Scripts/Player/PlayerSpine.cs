@@ -22,7 +22,7 @@ public class ModelSpine : MonoBehaviour, IModelSpine
     [SerializeField][SpineAnimation] string mode_side_anim;
     [SerializeField][SpineAnimation] string down_idle_anim;
     [SerializeField][SpineAnimation] string move_down_anim;
-    [SerializeField][SpineAnimation] string attack_anim;
+    [SerializeField][SpineAnimation]  public string attack_anim;
     [SerializeField][SpineAnimation] string hit_anim;
     [SerializeField][SpineAnimation] string death_anim;
 
@@ -100,7 +100,7 @@ public class ModelSpine : MonoBehaviour, IModelSpine
         return _skeleton.Skin.Name;
     }
 
-    float get_duration(string anim_name)
+    public float get_duration(string anim_name)
     {
         var anim_obj = skeleton_animation
             .skeletonDataAsset.GetSkeletonData(false)
