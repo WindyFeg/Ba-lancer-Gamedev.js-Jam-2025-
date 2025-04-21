@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class EntityStatsBase
+public abstract class EntityStatsBase : MonoBehaviour
 {
     public string EntityName { get; set; }
 
