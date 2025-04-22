@@ -100,11 +100,15 @@ public class PlayerStats : EntityStatsBase
     }
     // More Enemy specific stats can be added here
 
+
     #region Public Methods
     /// <summary>
     /// Handle the enemy's attack logic. 
     /// </summary>
-    public void TakeDamage(float damage) { }
+    public void TakeDamage(float damage) {
+        GetComponent<ModelSpine>().hit_start();
+        Debug.Log("Taking damage: " + damage);
+     }
 
     /// <summary>
     /// Handle the death of the entity. 

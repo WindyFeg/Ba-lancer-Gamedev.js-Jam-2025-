@@ -15,7 +15,7 @@ public class RangeOrg : IMonster
 
     void Start()
     {
-        playerPos = Player.instance.transform; // FIND THE PLAYER
+
     }
 
     public override void OnIdle()

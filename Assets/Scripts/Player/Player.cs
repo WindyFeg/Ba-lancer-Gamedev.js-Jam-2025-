@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerState : MonoBehaviour
+public class Player : PlayerStats
 {
     public float attackRange = 2f;
     public float attackSpeed = 1f;
@@ -13,9 +13,10 @@ public class PlayerState : MonoBehaviour
     private float lastAttackTime = -Mathf.Infinity;
     private ModelSpine playerSpine;
 
-
+    public static Player instance;
     void Awake()
     {
+        instance = this;
         playerSpine = GetComponent<ModelSpine>();
         currentHealth = maxHealth;
     }
@@ -56,27 +57,6 @@ public class PlayerState : MonoBehaviour
         playerSpine.attack_start();
     }
 
-
-    public void TakeDamage(int damage)
-    {
-
-        currentHealth -= damage;
-        Debug.Log("TakeDamage: " + currentHealth);
-
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-        else
-        {
-            playerSpine.hit_start();
-        }
-    }
-
-    void Die()
-    {
-        playerSpine.death_start();
-    }
 
     void OnDrawGizmosSelected()
     {
