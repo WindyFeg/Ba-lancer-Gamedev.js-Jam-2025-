@@ -30,13 +30,13 @@ public class CameraController : MonoBehaviour
         if (player != null /*&& isFollowPlayer*//*&& isScoll == false*/)
         {
             target.x = targetObj.transform.position.x;
-            target.y = 10f;
-            target.z = targetObj.transform.position.z - 5f;
+            target.y = 30f;
+            target.z = targetObj.transform.position.z - 15f;
 
             if (target.x < minX) target.x = minX;
             if (target.x > maxX) target.x = maxX;
-            if (target.y < minY) target.y = minY;
-            if (target.y > maxY) target.y = maxY;
+            if (target.z < minY) target.z = minY;
+            if (target.z > maxY) target.z = maxY;
 
             this.transform.position = Vector3.Lerp(this.transform.position, target, moveSpeed);
         }

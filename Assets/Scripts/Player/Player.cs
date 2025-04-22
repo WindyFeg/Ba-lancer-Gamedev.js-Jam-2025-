@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using aclf.game;
 using UnityEngine;
 
-public class PlayerState : MonoBehaviour
+public class Player : PlayerStats
 {
     public float attackRange = 2f;
     public float attackSpeed = 1f;
@@ -12,12 +11,13 @@ public class PlayerState : MonoBehaviour
 
     private int currentHealth;
     private float lastAttackTime = -Mathf.Infinity;
-    private PlayerSpine playerSpine;
+    private ModelSpine playerSpine;
 
-
+    public static Player instance;
     void Awake()
     {
-        playerSpine = GetComponent<PlayerSpine>();
+        instance = this;
+        playerSpine = GetComponent<ModelSpine>();
         currentHealth = maxHealth;
     }
 
@@ -52,31 +52,11 @@ public class PlayerState : MonoBehaviour
         foreach (Collider enemy in enemies)
         {
             Debug.Log("Attacking: " + enemy.name);
+            enemy.GetComponent<ModelSpine>().hit_start();
         }
         playerSpine.attack_start();
     }
 
-
-    public void TakeDamage(int damage)
-    {
-
-        currentHealth -= damage;
-        Debug.Log("TakeDamage: " + currentHealth);
-
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-        else
-        {
-            playerSpine.hit_start();
-        }
-    }
-
-    void Die()
-    {
-        playerSpine.death_start();
-    }
 
     void OnDrawGizmosSelected()
     {

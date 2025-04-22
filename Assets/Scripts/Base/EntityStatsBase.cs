@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public abstract class EntityStatsBase
+public abstract class EntityStatsBase : MonoBehaviour
 {
     public string EntityName { get; set; }
 
@@ -39,7 +39,7 @@ public abstract class EntityStatsBase
 
     private float _currentHealth;
     public float CurrentHealth
-    {
+    {   
         get => _currentHealth;
         set => _currentHealth = value;
     }
@@ -88,10 +88,40 @@ public abstract class EntityStatsBase
             _armor = value;
         }
     }
+    
+    private float _speed;
+    public float Speed
+    {
+        get => _speed;
+        set
+        {
+            if (value < 0)
+            {
+                value = 0;
+            }
+            _speed = value;
+        }
+    }
+    
+    private float _range;
+    public float Range
+    {
+        get => _range;
+        set
+        {
+            if (value < 0)
+            {
+                value = 0;
+            }
+            _range = value;
+        }
+    }
 
     // Change Stats Event
     public event Action<float, float> OnMaxHealthChanged;
     public event Action<float, float> OnAttackDamageChanged;
     public event Action<float, float> OnAttackSpeedChanged;
     public event Action<float, float> OnArmorChanged;
+    public event Action<float, float> OnSpeedChanged;
+    public event Action<float, float> OnRangeChanged;
 }

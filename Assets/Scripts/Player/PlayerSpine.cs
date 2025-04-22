@@ -6,9 +6,7 @@ using UnityEngine;
 
 // using AnimationState = Spine.AnimationState;
 
-namespace aclf.game
-{
-public class PlayerSpine : MonoBehaviour, IPlayerSpine
+public class ModelSpine : MonoBehaviour, IModelSpine
 {
     Coroutine cur_coroutine;
     bool isAttacking = false;
@@ -24,7 +22,7 @@ public class PlayerSpine : MonoBehaviour, IPlayerSpine
     [SerializeField][SpineAnimation] string mode_side_anim;
     [SerializeField][SpineAnimation] string down_idle_anim;
     [SerializeField][SpineAnimation] string move_down_anim;
-    [SerializeField][SpineAnimation] string attack_anim;
+    [SerializeField][SpineAnimation]  public string attack_anim;
     [SerializeField][SpineAnimation] string hit_anim;
     [SerializeField][SpineAnimation] string death_anim;
 
@@ -66,7 +64,7 @@ public class PlayerSpine : MonoBehaviour, IPlayerSpine
     {
         _cur_state.SetAnimation(0, hit_anim, false).MixDuration = 0;
         yield return new WaitForSeconds(get_duration(hit_anim));
-        _cur_state.SetAnimation(0, down_idle_anim, true);
+        _cur_state.SetAnimation(0, down_idle_anim, true).MixDuration = 0;
     }
 
     IEnumerator play_attack_cr()
@@ -102,7 +100,7 @@ public class PlayerSpine : MonoBehaviour, IPlayerSpine
         return _skeleton.Skin.Name;
     }
 
-    float get_duration(string anim_name)
+    public float get_duration(string anim_name)
     {
         var anim_obj = skeleton_animation
             .skeletonDataAsset.GetSkeletonData(false)
@@ -120,5 +118,4 @@ public class PlayerSpine : MonoBehaviour, IPlayerSpine
         _cur_state.SetAnimation(0, animName, loop).MixDuration = 0;
         currentAnimName = animName;
     }
-}
 }

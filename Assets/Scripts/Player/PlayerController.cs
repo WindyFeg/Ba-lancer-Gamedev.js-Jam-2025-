@@ -1,41 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
-using aclf.game;
 using UnityEngine;
 using UnityEngine.UI;
 namespace Game
 {
-    public class Player : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         // Start is called before the first frame update
 
 
         [SerializeField] public float moveSpeed;
-        private PlayerSpine playerSpine;
+        private ModelSpine playerSpine;
         private Rigidbody rb;
         private float xdir, zdir;
-        public static Player instance;
 
         private bool isMoving = false;
 
 
         private void Awake()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else if (instance != this)
-            {
-                Debug.Log("Instance already exists, destroying object!");
-                Destroy(this);
-            }
+    
 
         }
         private void Start()
         {
-            playerSpine = GetComponent<PlayerSpine>();
+            playerSpine = GetComponent<ModelSpine>();
             rb = gameObject.GetComponent<Rigidbody>();
         }
 
