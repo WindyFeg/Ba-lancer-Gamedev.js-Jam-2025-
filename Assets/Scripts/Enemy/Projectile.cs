@@ -5,7 +5,7 @@ public class Projectile : MonoBehaviour
 {
     public Transform target;
     public float launchAngle = 45f;
-    public float damage = 10f;
+    public float damage = 2f;
     public float impactRadius = 4f;
 
     private Vector3 startPoint;
