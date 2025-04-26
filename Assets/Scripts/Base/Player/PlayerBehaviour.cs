@@ -4,14 +4,8 @@ using UnityEngine.UI;
 
 namespace Base
 {
-    public class PlayerBehaviour : MonoBehaviour
+    public class PlayerBehaviour : PlayerStats
     {
-        [SerializeField] private int fakeAtk;
-        [SerializeField] private int fakeHp;
-        [SerializeField] private int fakeDef;
-        [SerializeField] private int fakeAtkSpeed;
-        [SerializeField] private int fakeSpeed;
-        [SerializeField] private int fakeRange;
         
         [Header("Sliders")]
         [SerializeField] private Slider attackSlider;
@@ -21,57 +15,55 @@ namespace Base
         [SerializeField] private Slider speedSlider;
         [SerializeField] private Slider rangeSlider;
         
-        public PlayerStats stats { get; private set; } = new PlayerStats(); 
-        
         private Dictionary<StatType, float> lastValidStatValues = new();
         private void Start()
         {
-            lastValidStatValues[StatType.ATK] = stats.AttackDamage;
-            lastValidStatValues[StatType.HP] = stats.MaxHealth;
-            lastValidStatValues[StatType.DEF] = stats.Armor;
-            lastValidStatValues[StatType.ATKSPEED] = stats.AttackSpeed;
-            lastValidStatValues[StatType.SPEED] = stats.Speed;
-            lastValidStatValues[StatType.RANGE] = stats.Range;
+            lastValidStatValues[StatType.ATK] = AttackDamage;
+            lastValidStatValues[StatType.HP] = MaxHealth;
+            lastValidStatValues[StatType.DEF] = Armor;
+            lastValidStatValues[StatType.ATKSPEED] = AttackSpeed;
+            lastValidStatValues[StatType.SPEED] = Speed;
+            lastValidStatValues[StatType.RANGE] = Range;
             
-            stats.OnAttackDamageChanged += (oldVal, newVal) =>
+            OnAttackDamageChanged += (oldVal, newVal) =>
             {
                 attackSlider.value = newVal; // optional to reset UI
             };
 
-            stats.OnMaxHealthChanged += (oldVal, newVal) =>
+            OnMaxHealthChanged += (oldVal, newVal) =>
             {
                 hpSlider.value = newVal;
             };
             
-            stats.OnArmorChanged += (oldVal, newVal) =>
+            OnArmorChanged += (oldVal, newVal) =>
             {
                 defSlider.value = newVal;
             };
-            stats.OnAttackSpeedChanged += (oldVal, newVal) =>
+            OnAttackSpeedChanged += (oldVal, newVal) =>
             {
                 atkSpeedSlider.value = newVal;
             };
-            stats.OnSpeedChanged += (oldVal, newVal) =>
+            OnSpeedChanged += (oldVal, newVal) =>
             {
                 speedSlider.value = newVal;
             };
-            stats.OnRangeChanged += (oldVal, newVal) =>
+            OnRangeChanged += (oldVal, newVal) =>
             {
                 rangeSlider.value = newVal;
             };
             
             // Set initial values
-            stats.AttackDamage = fakeAtk;
-            stats.MaxHealth = fakeHp;
-            stats.Armor = fakeDef;
-            attackSlider.value = fakeAtk;
-            hpSlider.value = fakeHp;
-            defSlider.value = fakeDef;
+            AttackDamage = this.AttackDamage;
+            MaxHealth = this.MaxHealth;
+            Armor = this.Armor;
+            attackSlider.value = this.AttackDamage;
+            hpSlider.value = this.MaxHealth;
+            defSlider.value = this.Armor;
         }
         private void Awake()
         {
             // Set up Base Stats - [Linked Stats]
-            stats.linkedStats = new List<StatConfig>
+            linkedStats = new List<StatConfig>
             {
                 new StatConfig
                 {
@@ -102,9 +94,9 @@ namespace Base
         
         public void OnStatSliderChanged(StatType stat, float newValue)
         {
-            if (stats.CanChangeStat(stat, newValue))
+            if (CanChangeStat(stat, newValue))
             {
-                stats.ApplyStatChange(stat, newValue);
+                ApplyStatChange(stat, newValue);
                 lastValidStatValues[stat] = newValue; // Update last valid value
                 Debug.Log($"Stat {stat} changed to {newValue}");
             }

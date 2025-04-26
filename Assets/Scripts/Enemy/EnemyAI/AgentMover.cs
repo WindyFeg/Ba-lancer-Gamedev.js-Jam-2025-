@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Base;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -9,7 +10,7 @@ public class AgentMover : MonoBehaviour
     private Rigidbody rb;
 
     [SerializeField]
-    private float maxSpeed = 2f, acceleration = 50f, deacceleration = 100f;
+    private float acceleration = 50f, deacceleration = 100f;
 
     [SerializeField]
     private float currentSpeed = 0f;
@@ -17,11 +18,17 @@ public class AgentMover : MonoBehaviour
     private Vector3 oldMovementInput;
     public Vector3 MovementInput { get; set; }
     private ModelSpine modelSpine; // link to model spine
+    [SerializeField] private PlayerBehaviour playerBehaviour; // link to player behaviour
 
     private void Awake()
     {
         modelSpine = GetComponentInChildren<ModelSpine>();
         rb = GetComponent<Rigidbody>();
+    
+    }
+    void Start()
+    {
+        Debug.Log("Check Speed: "+playerBehaviour);
     }
 
     private void FixedUpdate()
@@ -31,14 +38,14 @@ public class AgentMover : MonoBehaviour
         if (flatInput.magnitude > 0 && currentSpeed >= 0)
         {
             oldMovementInput = flatInput.normalized;
-            currentSpeed += acceleration * maxSpeed * Time.deltaTime;
+            currentSpeed += acceleration * playerBehaviour.Speed * Time.deltaTime;
         }
         else
         {
-            currentSpeed -= deacceleration * maxSpeed * Time.deltaTime;
+            currentSpeed -= deacceleration * playerBehaviour.Speed * Time.deltaTime;
         }
 
-        currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
+        currentSpeed = Mathf.Clamp(currentSpeed, 0, playerBehaviour.Speed);
 
         Vector3 velocity = oldMovementInput * currentSpeed;
         rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
