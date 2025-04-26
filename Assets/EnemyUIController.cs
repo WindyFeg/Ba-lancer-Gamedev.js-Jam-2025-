@@ -36,6 +36,7 @@ public class EnemyUIController : MonoBehaviour
         if (collider.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity))
         {
             // Call the function to handle the click event
+            Player.instance.GetComponent<AudioController>().PlayClick();
             Debug.Log("Enemy UI Clicked");
             GameUIManager.Instance.OnEnemyUIClicked(hit.collider.gameObject.GetComponent<PlayerBehaviour>());
         }

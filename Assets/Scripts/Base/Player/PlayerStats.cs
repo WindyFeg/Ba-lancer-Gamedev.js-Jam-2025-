@@ -8,7 +8,7 @@ public class PlayerStats : EntityStatsBase
 {
     // Player specific stats can be added here
     public List<StatConfig> linkedStats = new();
-    
+
     public const float StatMin = 1f;
     public const float StatMax = 10f;
 
@@ -18,10 +18,10 @@ public class PlayerStats : EntityStatsBase
     public void ApplyStatChange(StatType stat, float newValue)
     {
         if (isSyncing) return; // prevent loop
-     
+
         // Check if 1 of the linked stats is min/max => Prevent base stat from changing
         if (!CanChangeStat(stat, newValue)) return;
-        
+
         isSyncing = true;
         float currentValue = GetStat(stat);
         float delta = newValue - currentValue;
@@ -108,15 +108,19 @@ public class PlayerStats : EntityStatsBase
     /// <summary>
     /// Handle the enemy's attack logic. 
     /// </summary>
-    public void TakeDamage(float damage) {
+    public void TakeDamage(float damage)
+    {
         GetComponent<ModelSpine>().hit_start();
         GameObject popupText;
-          if (this.tag == "Player")
+        if (this.tag == "Player")
         {
+            Player.instance.GetComponent<AudioController>().PlayGetHit();
+
             Debug.Log($"Player taking damage: {damage} - Reduce by {Armor} DEF = {damage - Armor}");
         }
         else if (this.tag == "Enemy")
         {
+            Player.instance.GetComponent<AudioController>().PlayHit();
             Debug.Log($"Enemy taking damage: {damage} - Reduce by {Armor} DEF = {damage - Armor}");
         }
         if (damage < Armor)
@@ -135,44 +139,47 @@ public class PlayerStats : EntityStatsBase
         else
         {
             Debug.Log($"Current Health: {CurrentHealth}");
-        }   
+        }
     }
 
     /// <summary>
     /// Handle the death of the entity. 
     /// This method should be overridden in derived classes to implement specific death behavior.
     /// </summary>
-    public void Die() {
+    public void Die()
+    {
         ModelSpine spine = GetComponent<ModelSpine>();
         if (this.tag == "Player")
         {
             Debug.Log("Player is dead!");
             spine.death_start();
+            Player.instance.GetComponent<AudioController>().PlayLose();
             StartCoroutine(DieCoroutine(spine.get_duration(spine.death_anim)));
         }
         else if (this.tag == "Enemy")
         {
             spine.death_start();
             Debug.Log("Enemy is dead!");
+            Player.instance.GetComponent<AudioController>().PlayEDie();
             StartCoroutine(DieCoroutine(spine.get_duration(spine.death_anim)));
         }
-     }
-     IEnumerator DieCoroutine(float delay)
-     {
-         yield return new WaitForSeconds(delay);
-         if (this.tag == "Player")
-         {
+    }
+    IEnumerator DieCoroutine(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (this.tag == "Player")
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            
 
-         }
-         else if (this.tag == "Enemy")
-         {
+
+        }
+        else if (this.tag == "Enemy")
+        {
             // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GameManager.Instance.CheckNextLevel();
             Destroy(gameObject);
-         }
-     }
+        }
+    }
 
     /// <summary>
     /// Damage the target entity. 

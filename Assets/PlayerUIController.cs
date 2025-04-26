@@ -35,6 +35,7 @@ public class PlayerUIController : MonoBehaviour
         if (collider.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity))
         {
             // Call the function to handle the click event
+            Player.instance.GetComponent<AudioController>().PlayClick();
             Debug.Log("Player UI Clicked");
             GameUIManager.Instance.OnPlayerUIClicked(this);
         }
