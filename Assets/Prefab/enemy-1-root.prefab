@@ -171,7 +171,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 29a8c3095bfdf94498094d32905edfc2, type: 2}
+  - {fileID: 2100000, guid: cfd1114174c0ee242b1b8232643494f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: 56279d6d2f5b0cb46a98c1c17b1b027f, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: cc6a8b029b76e2444a2fd75537cc9168, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -233,7 +233,7 @@ MonoBehaviour:
   physicsMovementRelativeTo: {fileID: 0}
   updateTiming: 1
   unscaledTime: 0
-  _animationName: Move xuong 01
+  _animationName: 01 - Idle
   loop: 1
   timeScale: 1
 --- !u!114 &5241056779848178733
@@ -249,15 +249,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeleton_animation: {fileID: 1332014682992660685}
-  up_idle_anim: Move len 03 - Idle 1
-  move_up_anim: Move len 01
-  side_idle_anim: Move ngang 03 - Idle 1
-  mode_side_anim: Move ngang 01-1
-  down_idle_anim: Move xuong 03 - Idle 1
-  move_down_anim: Move xuong 01
-  attack_anim: Move ngang 04 - Attack
-  hit_anim: Move ngang - Hit 01
-  death_anim: Move ngang - Dead 01
+  up_idle_anim: 01 - Idle
+  move_up_anim: 05 - Move
+  side_idle_anim: 01 - Idle
+  mode_side_anim: 05 - Move
+  down_idle_anim: 01 - Idle
+  move_down_anim: 05 - Move
+  attack_anim: 02 - Attack 2 - Club
+  hit_anim: 03 - Hit
+  death_anim: 04 - Die
 --- !u!54 &733683400949948186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   detectionDelay: 0.05
   aiUpdateDelay: 0.06
   attackDelay: 1
-  attackDistance: 5
+  attackDistance: 20
   OnAttackPressed:
     m_PersistentCalls:
       m_Calls:
@@ -407,6 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0baf43aad63a84b9e14fb0551a2802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
+  projectileSpawnPoint: {fileID: 0}
 --- !u!1 &3076923787375951055
 GameObject:
   m_ObjectHideFlags: 0
