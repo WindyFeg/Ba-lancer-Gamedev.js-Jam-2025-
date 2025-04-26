@@ -67,6 +67,15 @@ public class GameManager : MonoBehaviour
 
     public void CheckNextLevel()
     {
+        // if there is tag enemy return
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length > 0)
+        {
+            Debug.Log("Cannot proceed to the next level. Enemies are still present.");
+            return; // Exit the method if enemies are present
+        }
+
+
         if (MapManager.Instance != null)
         {
             MapManager.Instance.NextMap();
