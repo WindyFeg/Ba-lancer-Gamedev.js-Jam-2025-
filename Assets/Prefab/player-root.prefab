@@ -241,6 +241,7 @@ MonoBehaviour:
   _speed: 0
   _range: 0
   linkedStats: []
+  popupTextPrefab: {fileID: 8549641869758960240, guid: 66b6dce344a40d34b9fb37fb860b503f, type: 3}
   playerBehaviour: {fileID: 1928399887919905913}
   enemyLayer:
     serializedVersion: 2
@@ -267,6 +268,7 @@ MonoBehaviour:
   _speed: 5
   _range: 5
   linkedStats: []
+  popupTextPrefab: {fileID: 8549641869758960240, guid: 66b6dce344a40d34b9fb37fb860b503f, type: 3}
   playerAttackRange: {fileID: 6066788645858966877}
   attackSlider: {fileID: 0}
   hpSlider: {fileID: 0}
