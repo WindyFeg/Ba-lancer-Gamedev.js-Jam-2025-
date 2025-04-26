@@ -7,10 +7,8 @@ namespace Base
 {
     public class PlayerBehaviour : PlayerStats
     {
-
-        [SerializeField] private PlayerAttackRange playerAttackRange; 
-        [Header("Sliders")]
-        [SerializeField] public Slider attackSlider;
+        [SerializeField] private PlayerAttackRange playerAttackRange;
+        [Header("Sliders")] [SerializeField] public Slider attackSlider;
         [SerializeField] public Slider hpSlider;
         [SerializeField] public Slider defSlider;
         [SerializeField] public Slider atkSpeedSlider;
@@ -18,11 +16,10 @@ namespace Base
         [SerializeField] public Slider rangeSlider;
 
         private Dictionary<StatType, float> lastValidStatValues = new();
+
         private void Start()
         {
             if (attackSlider == null) return;
-            InitialRandomStats();
-
             lastValidStatValues[StatType.ATK] = AttackDamage;
             lastValidStatValues[StatType.HP] = MaxHealth;
             lastValidStatValues[StatType.DEF] = Armor;
@@ -35,27 +32,12 @@ namespace Base
                 attackSlider.value = newVal; // optional to reset UI
             };
 
-            OnMaxHealthChanged += (oldVal, newVal) =>
-            {
-                hpSlider.value = newVal;
-            };
+            OnMaxHealthChanged += (oldVal, newVal) => { hpSlider.value = newVal; };
 
-            OnArmorChanged += (oldVal, newVal) =>
-            {
-                defSlider.value = newVal;
-            };
-            OnAttackSpeedChanged += (oldVal, newVal) =>
-            {
-                atkSpeedSlider.value = newVal;
-            };
-            OnSpeedChanged += (oldVal, newVal) =>
-            {
-                speedSlider.value = newVal;
-            };
-            OnRangeChanged += (oldVal, newVal) =>
-            {
-                rangeSlider.value = newVal;
-            };
+            OnArmorChanged += (oldVal, newVal) => { defSlider.value = newVal; };
+            OnAttackSpeedChanged += (oldVal, newVal) => { atkSpeedSlider.value = newVal; };
+            OnSpeedChanged += (oldVal, newVal) => { speedSlider.value = newVal; };
+            OnRangeChanged += (oldVal, newVal) => { rangeSlider.value = newVal; };
 
             // Set initial values
             AttackDamage = this.AttackDamage;
@@ -65,11 +47,11 @@ namespace Base
             hpSlider.value = this.MaxHealth;
             defSlider.value = this.Armor;
         }
+
         private void Awake()
         {
             // Set up Base Stats - [Linked Stats]
             if (attackSlider == null) return;
-            
             InitialRandomStats();
             SetUpListeners();
         }
@@ -95,6 +77,7 @@ namespace Base
                 {
                     playerAttackRange.SetAttackRange(newValue);
                 }
+
                 Debug.Log($"Stat {stat} changed to {newValue}");
             }
             else
@@ -126,16 +109,45 @@ namespace Base
 
         public void InitialRandomStats()
         {
-            linkedStats = new List<StatConfig>
+            var pairs = GenerateRandomPairs();
+            linkedStats = new List<StatConfig>();
+            foreach (var pair in pairs)
             {
-                new StatConfig
+                linkedStats.Add(new StatConfig
                 {
-                    BaseStat = StatType.ATK,
-                    LinkedStat = new[] { (StatType)Random.Range(1, 6) },
+                    BaseStat = (StatType)pair.Item1,
+                    LinkedStat = new[] { (StatType)pair.Item2 },
                     Ratio = 1f
-                },
-            };
-            SetUpListeners();
+                });
+                
+                // Reverse the pair for the linked stat
+                linkedStats.Add(new StatConfig
+                {
+                    BaseStat = (StatType)pair.Item2,
+                    LinkedStat = new[] { (StatType)pair.Item1 },
+                    Ratio = 1f
+                });
+            }
+        }
+
+        private List<(int, int)> GenerateRandomPairs()
+        {
+            List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5 };
+
+            // Shuffle the numbers
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                int randomIndex = Random.Range(i, numbers.Count);
+                (numbers[i], numbers[randomIndex]) = (numbers[randomIndex], numbers[i]);
+            }
+
+            List<(int, int)> pairs = new List<(int, int)>();
+            for (int i = 0; i < numbers.Count; i += 2)
+            {
+                pairs.Add((numbers[i], numbers[i + 1]));
+            }
+
+            return pairs;
         }
     }
 }
