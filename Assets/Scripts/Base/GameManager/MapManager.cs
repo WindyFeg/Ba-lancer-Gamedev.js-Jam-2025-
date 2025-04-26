@@ -66,7 +66,7 @@ public class MapManager : MonoBehaviour
             // Spawn a random enemy at a random position
             int randomIndex = Random.Range(0, enemyPrefabs.Length);
             GameObject selectedEnemy = enemyPrefabs[randomIndex];
-            Vector3 randomPosition = new Vector3(Random.Range(-20, 10), 0, Random.Range(-10, 15));
+            Vector3 randomPosition = new Vector3(Random.Range(-20, 10), 0.6f, Random.Range(-10, 15));
             Instantiate(selectedEnemy, randomPosition, Quaternion.identity);
         }
     }
