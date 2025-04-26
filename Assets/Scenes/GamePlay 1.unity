@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 149670435}
   - component: {fileID: 149670434}
   m_Layer: 5
-  m_Name: Stat
+  m_Name: PlayerStat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1804,6 +1804,7 @@ MonoBehaviour:
   - {fileID: 2049110179}
   - {fileID: 174269599}
   - {fileID: 479349176}
+  enemyPrefabs: []
 --- !u!1 &613323559
 GameObject:
   m_ObjectHideFlags: 0
@@ -3989,7 +3990,7 @@ GameObject:
   - component: {fileID: 1236288693}
   - component: {fileID: 1236288692}
   m_Layer: 5
-  m_Name: Stat (1)
+  m_Name: 'EnemyStat '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5249,6 +5250,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statUI: {fileID: 149670432}
+  enemyUI: {fileID: 1236288690}
+  attackSlider: {fileID: 202174480}
+  hpSlider: {fileID: 1413012613}
+  defSlider: {fileID: 2117780308}
+  atkSpeedSlider: {fileID: 705083162}
+  speedSlider: {fileID: 1247675000}
+  rangeSlider: {fileID: 1358814016}
   slowMotionScale: 0.2
 --- !u!4 &1589754176
 Transform:

@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 9217356115121067546}
   - component: {fileID: 6190709582793657395}
   - component: {fileID: 5033504873810979723}
+  - component: {fileID: 4298525437835504329}
   m_Layer: 6
   m_Name: boss-1-root
   m_TagString: Enemy
@@ -134,7 +135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2570242252755118469}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -3.41, y: 0.6, z: 5.26}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
@@ -143,7 +144,7 @@ Transform:
   - {fileID: 6169888727343430290}
   - {fileID: 3664622391861566771}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!33 &1312071886137794223
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -305,8 +306,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0, y: 0, z: 0}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.7560182, y: 5.2122674, z: 0.762578}
+  m_Center: {x: -0.023314357, y: 2.3150048, z: -0.381289}
 --- !u!114 &7969714182409412116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,6 +441,18 @@ MonoBehaviour:
   atkSpeedSlider: {fileID: 0}
   speedSlider: {fileID: 0}
   rangeSlider: {fileID: 0}
+--- !u!114 &4298525437835504329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2570242252755118469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4113e394afdda1f4c8767cd2ecdebbb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3076923787375951055
 GameObject:
   m_ObjectHideFlags: 0

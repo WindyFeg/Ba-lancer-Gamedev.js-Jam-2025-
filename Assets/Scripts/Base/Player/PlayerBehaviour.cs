@@ -6,15 +6,15 @@ namespace Base
 {
     public class PlayerBehaviour : PlayerStats
     {
-        
+
         [Header("Sliders")]
-        [SerializeField] private Slider attackSlider;
-        [SerializeField] private Slider hpSlider;
-        [SerializeField] private Slider defSlider;
-        [SerializeField] private Slider atkSpeedSlider;
-        [SerializeField] private Slider speedSlider;
-        [SerializeField] private Slider rangeSlider;
-        
+        [SerializeField] public Slider attackSlider;
+        [SerializeField] public Slider hpSlider;
+        [SerializeField] public Slider defSlider;
+        [SerializeField] public Slider atkSpeedSlider;
+        [SerializeField] public Slider speedSlider;
+        [SerializeField] public Slider rangeSlider;
+
         private Dictionary<StatType, float> lastValidStatValues = new();
         private void Start()
         {
@@ -24,7 +24,7 @@ namespace Base
             lastValidStatValues[StatType.ATKSPEED] = AttackSpeed;
             lastValidStatValues[StatType.SPEED] = Speed;
             lastValidStatValues[StatType.RANGE] = Range;
-            
+
             OnAttackDamageChanged += (oldVal, newVal) =>
             {
                 attackSlider.value = newVal; // optional to reset UI
@@ -34,7 +34,7 @@ namespace Base
             {
                 hpSlider.value = newVal;
             };
-            
+
             OnArmorChanged += (oldVal, newVal) =>
             {
                 defSlider.value = newVal;
@@ -51,7 +51,7 @@ namespace Base
             {
                 rangeSlider.value = newVal;
             };
-            
+
             // Set initial values
             AttackDamage = this.AttackDamage;
             MaxHealth = this.MaxHealth;
@@ -80,7 +80,7 @@ namespace Base
             };
             SetUpListeners();
         }
-        
+
         // Listeners for the sliders to call OnStatSliderChanged when their values change.
         private void SetUpListeners()
         {
@@ -91,7 +91,7 @@ namespace Base
             speedSlider.onValueChanged.AddListener(value => OnStatSliderChanged(StatType.SPEED, value));
             rangeSlider.onValueChanged.AddListener(value => OnStatSliderChanged(StatType.RANGE, value));
         }
-        
+
         public void OnStatSliderChanged(StatType stat, float newValue)
         {
             if (CanChangeStat(stat, newValue))

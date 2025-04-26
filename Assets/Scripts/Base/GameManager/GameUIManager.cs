@@ -1,12 +1,23 @@
 using System;
 using System.Collections;
+using Base;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
     public static GameUIManager Instance { get; private set; }
     public GameObject statUI;
+    public GameObject enemyUI;
+
+    [Header("Enemy Sliders")]
+    [SerializeField] private Slider attackSlider;
+    [SerializeField] private Slider hpSlider;
+    [SerializeField] private Slider defSlider;
+    [SerializeField] private Slider atkSpeedSlider;
+    [SerializeField] private Slider speedSlider;
+    [SerializeField] private Slider rangeSlider;
 
     private void Awake()
     {
@@ -52,6 +63,37 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
+    private void ToggleEnemyUI()
+    {
+        CanvasGroup canvasGroup = enemyUI.GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = enemyUI.AddComponent<CanvasGroup>();
+        }
+
+        if (enemyUI.activeSelf)
+        {
+            enemyUI.transform.DOMoveX(-500, 0.2f).SetEase(Ease.OutCubic);
+            canvasGroup.DOFade(0, 1f).SetEase(Ease.OutCubic).OnComplete(() =>
+            {
+                enemyUI.SetActive(false);
+            });
+            CameraManager.Instance.ZoomOutFromPlayer();
+            EndSlowMotion();
+        }
+        else
+        {
+            enemyUI.SetActive(true);
+            canvasGroup.alpha = 0;
+            enemyUI.transform.DOMoveX(600, 0.2f).SetEase(Ease.OutCubic);
+            canvasGroup.DOFade(1, 1f).SetEase(Ease.OutCubic).OnComplete(() =>
+            {
+            });
+            CameraManager.Instance.ZoomIntoPlayer();
+            StartSlowMotion();
+        }
+    }
+
     public float slowMotionScale = 0.2f;
 
     public void StartSlowMotion()
@@ -69,4 +111,17 @@ public class GameUIManager : MonoBehaviour
     {
         ToggleStatUI();
     }
+
+    public void OnEnemyUIClicked(PlayerBehaviour enemyUIController)
+    {
+        enemyUIController.AttackDamage = attackSlider.value;
+        enemyUIController.CurrentHealth = hpSlider.value;
+        enemyUIController.Armor = defSlider.value;
+        enemyUIController.Speed = speedSlider.value;
+        enemyUIController.Range = rangeSlider.value;
+
+        ToggleEnemyUI();
+    }
+
+
 }
