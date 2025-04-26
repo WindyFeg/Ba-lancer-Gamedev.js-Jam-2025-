@@ -112,6 +112,13 @@ public class ModelSpine : MonoBehaviour, IModelSpine
 
     void play_animation_if_new(string animName, bool loop)
     {
+        if (animName == death_anim) 
+        {
+            stop_coroutine(); // stop any current animation
+            _cur_state.SetAnimation(0, animName, false).MixDuration = 0;
+            currentAnimName = animName;
+            return;
+        }
         if (isAttacking) return; // block while attacking
         if (currentAnimName == animName) return;
 
