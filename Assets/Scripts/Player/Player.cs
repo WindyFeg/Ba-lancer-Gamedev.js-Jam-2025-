@@ -53,6 +53,7 @@ public class Player : PlayerStats
         {
             Debug.Log("Attacking: " + enemy.name);
             enemy.GetComponent<ModelSpine>().hit_start();
+            
         }
         playerSpine.attack_start();
     }

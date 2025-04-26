@@ -1,0 +1,36 @@
+Animation 2.png
+size:1804,479
+filter:Linear,Linear
+pma:true
+Chan phai
+bounds:1645,170,142,148
+offsets:469,124,2488,1145
+Chan trai
+bounds:1645,318,149,161
+offsets:312,128,2488,1145
+Mat phai
+bounds:1563,228,24,24
+offsets:560,464,2488,1145
+Mat trai
+bounds:1563,204,24,24
+offsets:429,478,2488,1145
+Mieng
+bounds:1296,141,267,111
+offsets:359,369,2488,1145
+Rock
+bounds:1296,252,349,227
+offsets:836,117,2488,1145
+Tay phai
+bounds:1296,5,136,253
+offsets:613,215,2488,1145
+rotate:90
+Tay trai
+bounds:1549,15,126,255
+offsets:203,212,2488,1145
+rotate:90
+Than
+bounds:0,0,479,560
+offsets:241,167,2488,1145
+rotate:90
+effect 1
+bounds:560,65,736,414
