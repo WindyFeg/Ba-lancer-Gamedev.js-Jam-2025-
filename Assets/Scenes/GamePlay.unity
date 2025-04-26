@@ -3104,7 +3104,7 @@ MonoBehaviour:
   - {fileID: 2570242252755118469, guid: 53f961a183a92f1488be59bd68833046, type: 3}
   - {fileID: 2570242252755118469, guid: 59366999aa4894748af005c71f6f7f57, type: 3}
   - {fileID: 2570242252755118469, guid: 0b2f1989f57f39d4292067087bd70917, type: 3}
-  cameraTransform: {fileID: 0}
+  cameraTransform: {fileID: 1305493960}
 --- !u!1 &613323559
 GameObject:
   m_ObjectHideFlags: 0
@@ -6435,6 +6435,11 @@ PrefabInstance:
 --- !u!4 &1305493959 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6800558140731844911, guid: 117a880466aa6764f82150c8d06aa53d, type: 3}
+  m_PrefabInstance: {fileID: 1305493958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1305493960 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5142659314530605509, guid: 117a880466aa6764f82150c8d06aa53d, type: 3}
   m_PrefabInstance: {fileID: 1305493958}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1344501246

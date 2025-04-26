@@ -56,7 +56,7 @@ public class ModelSpine : MonoBehaviour, IModelSpine
         cur_coroutine = StartCoroutine(play_hit_cr());
     }
 
-    public void death_start()
+public void death_start()
     {
         StartCoroutine(play_death_cr());
     }

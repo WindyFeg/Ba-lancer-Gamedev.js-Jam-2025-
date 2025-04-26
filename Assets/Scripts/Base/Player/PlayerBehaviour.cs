@@ -179,12 +179,12 @@ namespace Base
 
         private void RandomPlayerStats()
         {
-            AttackDamage = Random.Range(3, 6);
-            MaxHealth = Random.Range(3, 6);
-            Armor = Random.Range(3, 6);
-            AttackSpeed = Random.Range(3, 6);
-            Speed = Random.Range(3, 6);
-            Range = Random.Range(3, 6);
+            AttackDamage = Random.Range(4, 6);
+            MaxHealth = Random.Range(4, 6);
+            Armor = Random.Range(4, 6);
+            AttackSpeed = Random.Range(4, 6);
+            Speed = Random.Range(4, 6);
+            Range = Random.Range(4, 6);
         }
         
         private void RandomEnemyStats()

@@ -168,6 +168,7 @@ public class PlayerStats : EntityStatsBase
          }
          else if (this.tag == "Enemy")
          {
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GameManager.Instance.CheckNextLevel();
             Destroy(gameObject);
          }
