@@ -100,12 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   launchAngle: 45
-  impactAreaPrefab: {fileID: 0}
-  damage: 10
+  damage: 2
   impactRadius: 3
-  damageLayer:
-    serializedVersion: 2
-    m_Bits: 0
   explosionParticles: {fileID: 4401502372303837687, guid: 288cabc1d169d2245a2b48fbd8d0be00, type: 3}
 --- !u!1001 &1058755310311619329
 PrefabInstance:

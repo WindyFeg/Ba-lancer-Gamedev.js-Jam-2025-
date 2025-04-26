@@ -163,6 +163,7 @@ public class PlayerStats : EntityStatsBase
          if (this.tag == "Player")
          {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
 
          }
          else if (this.tag == "Enemy")
