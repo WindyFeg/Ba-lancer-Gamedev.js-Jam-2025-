@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using DG.Tweening;
 
 public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; }
     public GameObject[] mapPrefabs;
     public GameObject[] enemyPrefabs;
+    public Transform cameraTransform;
 
     public void Awake()
     {
@@ -46,6 +48,7 @@ public class MapManager : MonoBehaviour
 
     public void NextMap()
     {
+        cameraTransform.DOMove(new Vector3(0, 0, -35), 1f).SetEase(Ease.InOutQuad);
         SpawnMap();
         SpawnEnemy();
     }

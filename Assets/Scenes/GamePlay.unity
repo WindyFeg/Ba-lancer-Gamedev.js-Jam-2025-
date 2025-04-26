@@ -1880,6 +1880,7 @@ MonoBehaviour:
   - {fileID: 2570242252755118469, guid: 53f961a183a92f1488be59bd68833046, type: 3}
   - {fileID: 2570242252755118469, guid: 59366999aa4894748af005c71f6f7f57, type: 3}
   - {fileID: 2570242252755118469, guid: 0b2f1989f57f39d4292067087bd70917, type: 3}
+  cameraTransform: {fileID: 0}
 --- !u!1 &613323559
 GameObject:
   m_ObjectHideFlags: 0
@@ -4662,6 +4663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: player-root
       objectReference: {fileID: 0}
+    - target: {fileID: 1373446868875627214, guid: 117a880466aa6764f82150c8d06aa53d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1928399887919905913, guid: 117a880466aa6764f82150c8d06aa53d, type: 3}
       propertyPath: _armor
       value: 5
@@ -4757,6 +4762,10 @@ PrefabInstance:
     - target: {fileID: 6800558140731844911, guid: 117a880466aa6764f82150c8d06aa53d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226473613951680962, guid: 117a880466aa6764f82150c8d06aa53d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8890671582975147516, guid: 117a880466aa6764f82150c8d06aa53d, type: 3}
       propertyPath: m_Mesh
