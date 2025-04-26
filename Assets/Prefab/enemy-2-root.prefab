@@ -396,7 +396,7 @@ MonoBehaviour:
   acceleration: 50
   deacceleration: 100
   currentSpeed: 0
-  playerBehaviour: {fileID: 0}
+  playerBehaviour: {fileID: 308896396530030871}
 --- !u!114 &6190709582793657395
 MonoBehaviour:
   m_ObjectHideFlags: 0

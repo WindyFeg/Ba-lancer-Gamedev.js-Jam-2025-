@@ -119,7 +119,6 @@ GameObject:
   - component: {fileID: 9217356115121067546}
   - component: {fileID: 6190709582793657395}
   - component: {fileID: 5033504873810979723}
-  - component: {fileID: 3310331722360221723}
   - component: {fileID: 3952067661374721771}
   m_Layer: 6
   m_Name: enemy-1-root
@@ -397,7 +396,7 @@ MonoBehaviour:
   acceleration: 50
   deacceleration: 100
   currentSpeed: 0
-  playerBehaviour: {fileID: 3310331722360221723}
+  playerBehaviour: {fileID: 5033504873810979723}
 --- !u!114 &6190709582793657395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,36 +412,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
 --- !u!114 &5033504873810979723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2570242252755118469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 974e784f6e2d4f7e89a0030a54303a70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _level: 1
-  _maxHealth: 5
-  _currentHealth: 5
-  _attackDamage: 5
-  _attackSpeed: 0
-  _armor: 5
-  _speed: 5
-  _range: 5
-  linkedStats:
-  - BaseStat: 0
-    LinkedStat: 03000000
-    Ratio: 0
-  attackSlider: {fileID: 0}
-  hpSlider: {fileID: 0}
-  defSlider: {fileID: 0}
-  atkSpeedSlider: {fileID: 0}
-  speedSlider: {fileID: 0}
-  rangeSlider: {fileID: 0}
---- !u!114 &3310331722360221723
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

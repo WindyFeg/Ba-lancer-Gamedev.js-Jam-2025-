@@ -18,6 +18,8 @@ namespace Base
         private Dictionary<StatType, float> lastValidStatValues = new();
         private void Start()
         {
+            if (attackSlider == null) return;
+
             lastValidStatValues[StatType.ATK] = AttackDamage;
             lastValidStatValues[StatType.HP] = MaxHealth;
             lastValidStatValues[StatType.DEF] = Armor;
@@ -63,6 +65,8 @@ namespace Base
         private void Awake()
         {
             // Set up Base Stats - [Linked Stats]
+            if (attackSlider == null) return;
+            
             linkedStats = new List<StatConfig>
             {
                 new StatConfig

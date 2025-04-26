@@ -44,7 +44,7 @@ public class EnemyUIController : MonoBehaviour
     private IEnumerator ClickCooldown()
     {
         canClick = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canClick = true;
     }
 }

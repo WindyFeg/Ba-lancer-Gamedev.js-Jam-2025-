@@ -63,7 +63,7 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
-    private void ToggleEnemyUI()
+    private void ToggleEnemyUI(PlayerBehaviour enemyUIController)
     {
         CanvasGroup canvasGroup = enemyUI.GetComponent<CanvasGroup>();
         if (canvasGroup == null)
@@ -73,6 +73,7 @@ public class GameUIManager : MonoBehaviour
 
         if (enemyUI.activeSelf)
         {
+            UpdateEnemyStats(enemyUIController);
             enemyUI.transform.DOMoveX(-500, 0.2f).SetEase(Ease.OutCubic);
             canvasGroup.DOFade(0, 1f).SetEase(Ease.OutCubic).OnComplete(() =>
             {
@@ -83,6 +84,7 @@ public class GameUIManager : MonoBehaviour
         }
         else
         {
+            UpdateEnemyUI(enemyUIController);
             enemyUI.SetActive(true);
             canvasGroup.alpha = 0;
             enemyUI.transform.DOMoveX(900, 0.2f).SetEase(Ease.OutCubic);
@@ -114,13 +116,28 @@ public class GameUIManager : MonoBehaviour
 
     public void OnEnemyUIClicked(PlayerBehaviour enemyUIController)
     {
+
+        ToggleEnemyUI(enemyUIController);
+    }
+
+    private void UpdateEnemyUI(PlayerBehaviour enemyUIController){
+        attackSlider.value = enemyUIController.AttackDamage;
+        hpSlider.value = enemyUIController.CurrentHealth;
+        defSlider.value = enemyUIController.Armor;
+        atkSpeedSlider.value = enemyUIController.AttackSpeed;
+        speedSlider.value = enemyUIController.Speed;
+        rangeSlider.value = enemyUIController.Range;
+
+    }
+
+    private void UpdateEnemyStats(PlayerBehaviour enemyUIController)
+    {
         enemyUIController.AttackDamage = attackSlider.value;
         enemyUIController.CurrentHealth = hpSlider.value;
         enemyUIController.Armor = defSlider.value;
+        enemyUIController.AttackSpeed = atkSpeedSlider.value;
         enemyUIController.Speed = speedSlider.value;
         enemyUIController.Range = rangeSlider.value;
-
-        ToggleEnemyUI();
     }
 
 
