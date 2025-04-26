@@ -21,6 +21,7 @@ namespace Base
         private void Start()
         {
             if (attackSlider == null) return;
+            InitialRandomStats();
 
             lastValidStatValues[StatType.ATK] = AttackDamage;
             lastValidStatValues[StatType.HP] = MaxHealth;
@@ -69,21 +70,7 @@ namespace Base
             // Set up Base Stats - [Linked Stats]
             if (attackSlider == null) return;
             
-            linkedStats = new List<StatConfig>
-            {
-                new StatConfig
-                {
-                    BaseStat = StatType.ATK,
-                    LinkedStat = new[] { StatType.HP },
-                    Ratio = 1f
-                },
-                new StatConfig
-                {
-                    BaseStat = StatType.HP,
-                    LinkedStat = new[] { StatType.DEF },
-                    Ratio = 1f
-                }
-            };
+            InitialRandomStats();
             SetUpListeners();
         }
 
@@ -135,6 +122,20 @@ namespace Base
                         break;
                 }
             }
+        }
+
+        public void InitialRandomStats()
+        {
+            linkedStats = new List<StatConfig>
+            {
+                new StatConfig
+                {
+                    BaseStat = StatType.ATK,
+                    LinkedStat = new[] { (StatType)Random.Range(1, 6) },
+                    Ratio = 1f
+                },
+            };
+            SetUpListeners();
         }
     }
 }
