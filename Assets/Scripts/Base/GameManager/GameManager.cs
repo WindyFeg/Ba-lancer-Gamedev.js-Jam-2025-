@@ -69,20 +69,14 @@ public class GameManager : MonoBehaviour
     {
         // if there is tag enemy return
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        if (enemies.Length > 0)
+        if (enemies.Length > 1)
         {
             Debug.Log("Cannot proceed to the next level. Enemies are still present.");
             return; // Exit the method if enemies are present
         }
 
-
-        if (MapManager.Instance != null)
-        {
-            MapManager.Instance.NextMap();
-        }
-        else
-        {
-            Debug.LogError("MapManager instance is null. Make sure it is initialized before calling this method.");
-        }
+        Debug.Log("NEXT MAP");
+        MapManager.Instance.NextMap();
+      
     }
 }
