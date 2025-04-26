@@ -117,7 +117,11 @@ public class PlayerStats : EntityStatsBase
         {
             Debug.Log($"Enemy taking damage: {damage} - Reduce by {Armor} DEF = {damage - Armor}");
         }
-
+        if (damage < Armor)
+        {
+            Debug.Log("Damage is less than armor, no damage taken.");
+            return;
+        }
         CurrentHealth -= (damage - Armor);
         if (CurrentHealth <= 0)
         {
