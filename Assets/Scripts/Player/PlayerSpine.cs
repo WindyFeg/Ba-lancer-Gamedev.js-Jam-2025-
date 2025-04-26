@@ -74,7 +74,7 @@ public class ModelSpine : MonoBehaviour, IModelSpine
         isAttacking = false; // attack done
 
         // Optionally return to idle or side move
-        _cur_state.SetAnimation(0, mode_side_anim, true);
+        _cur_state.SetAnimation(0, mode_side_anim, true).MixDuration = 0;
         currentAnimName = mode_side_anim;
     }
 
