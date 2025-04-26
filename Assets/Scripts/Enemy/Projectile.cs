@@ -69,7 +69,11 @@ public class Projectile : MonoBehaviour
 
 private void OnHitGround()
 {
-    if (Player.instance == null) Destroy(this.gameObject);
+    if (Player.instance == null) 
+    {
+        Destroy(this.gameObject);
+        return;
+    }
 
     Vector3 landedPosition = transform.position;
     Vector3 playerXZ = new Vector3(Player.instance.transform.position.x, 0f, Player.instance.transform.position.z);

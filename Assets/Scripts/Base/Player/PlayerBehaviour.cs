@@ -84,7 +84,7 @@ namespace Base
             {
                 ApplyStatChange(stat, newValue);
                 lastValidStatValues[stat] = newValue; // Update last valid value
-                if (stat == StatType.RANGE && playerAttackRange != null)
+                if (stat == StatType.RANGE && playerAttackRange != null && newValue > 0)
                 {
                     playerAttackRange.SetAttackRange(newValue);
                 }
@@ -136,7 +136,7 @@ namespace Base
             speedSliderText.text = Speed + "";
             rangeSliderText.text = Range + "";
             
-            if (playerAttackRange != null)
+            if (playerAttackRange != null && Range > 0)
             {
                 playerAttackRange.SetAttackRange(Range);
             }
