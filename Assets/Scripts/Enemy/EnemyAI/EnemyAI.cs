@@ -29,6 +29,8 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField]
     private ContextSolver movementDirectionSolver;
+    [SerializeField]
+    private AgentMover agentMover;
 
     bool following = false;
 
@@ -62,7 +64,8 @@ public class EnemyAI : MonoBehaviour
             aiData.currentTarget = aiData.targets[0];
         }
 
-        OnMovementInput?.Invoke(movementInput);
+        agentMover.Move(movementInput);
+        
     }
 
     private IEnumerator ChaseAndAttack()

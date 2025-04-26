@@ -366,6 +366,7 @@ MonoBehaviour:
       m_Calls: []
   movementInput: {x: 0, y: 0, z: 0}
   movementDirectionSolver: {fileID: 4409153060586557671}
+  agentMover: {fileID: 9217356115121067546}
 --- !u!114 &5341730898203662582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,6 +436,7 @@ MonoBehaviour:
   - BaseStat: 0
     LinkedStat: 03000000
     Ratio: 0
+  playerAttackRange: {fileID: 0}
   attackSlider: {fileID: 0}
   hpSlider: {fileID: 0}
   defSlider: {fileID: 0}

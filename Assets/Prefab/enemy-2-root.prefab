@@ -366,6 +366,7 @@ MonoBehaviour:
       m_Calls: []
   movementInput: {x: 0, y: 0, z: 0}
   movementDirectionSolver: {fileID: 4409153060586557671}
+  agentMover: {fileID: 9217356115121067546}
 --- !u!114 &5341730898203662582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,14 +425,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 1
-  _maxHealth: 0
-  _currentHealth: 0
-  _attackDamage: 0
-  _attackSpeed: 0
-  _armor: 0
-  _speed: 0
-  _range: 0
+  _maxHealth: 5
+  _currentHealth: 5
+  _attackDamage: 5
+  _attackSpeed: 5
+  _armor: 5
+  _speed: 5
+  _range: 5
   linkedStats: []
+  playerAttackRange: {fileID: 0}
   attackSlider: {fileID: 0}
   hpSlider: {fileID: 0}
   defSlider: {fileID: 0}

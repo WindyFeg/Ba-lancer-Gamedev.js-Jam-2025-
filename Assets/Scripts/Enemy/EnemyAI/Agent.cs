@@ -32,7 +32,9 @@ public class Agent : MonoBehaviour
         //pointerInput = GetPointerInput();
         //movementInput = movement.action.ReadValue<Vector2>().normalized;
 
-        agentMover.MovementInput = MovementInput;
+        // // agentMover.MovementInput = MovementInput;
+        // agentMover.Move(MovementInput);
+        // Debug.Log("Movement Input: " +  MovementInput);
         AnimateCharacter();
     }
 

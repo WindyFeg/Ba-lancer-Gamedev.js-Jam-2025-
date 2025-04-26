@@ -29,13 +29,34 @@ public class AgentMover : MonoBehaviour
     void Start()
     {
         Debug.Log("Check Speed: "+playerBehaviour);
+
     }
 
     private void FixedUpdate()
     {
-        Vector3 flatInput = new Vector3(MovementInput.x, 0f, MovementInput.z);
+        // Vector3 flatInput = new Vector3(MovementInput.x, 0f, MovementInput.z);
+        // Debug.Log("Flat Input: " + flatInput);
+        // if (flatInput.magnitude > 0 && currentSpeed >= 0)
+        // {
+        //     oldMovementInput = flatInput.normalized;
+        //     currentSpeed += acceleration * playerBehaviour.Speed * Time.deltaTime;
+        // }
+        // else
+        // {
+        //     currentSpeed -= deacceleration * playerBehaviour.Speed * Time.deltaTime;
+        // }
 
-        if (flatInput.magnitude > 0 && currentSpeed >= 0)
+        // currentSpeed = Mathf.Clamp(currentSpeed, 0, playerBehaviour.Speed);
+
+        // Vector3 velocity = oldMovementInput * currentSpeed;
+        // rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
+
+        // // Animation logic
+        // PlayAnimationByDirection(flatInput);
+    }
+    public void Move(Vector3 flatInput)
+    {
+         if (flatInput.magnitude > 0 && currentSpeed >= 0)
         {
             oldMovementInput = flatInput.normalized;
             currentSpeed += acceleration * playerBehaviour.Speed * Time.deltaTime;
@@ -49,9 +70,8 @@ public class AgentMover : MonoBehaviour
 
         Vector3 velocity = oldMovementInput * currentSpeed;
         rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
-
-        // Animation logic
         PlayAnimationByDirection(flatInput);
+
     }
 
     private void PlayAnimationByDirection(Vector3 direction)
