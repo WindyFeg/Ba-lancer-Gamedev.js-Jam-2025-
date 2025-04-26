@@ -126,6 +126,11 @@ namespace Base
             atkSpeedSliderText.text = AttackSpeed + "";
             speedSliderText.text = Speed + "";
             rangeSliderText.text = Range + "";
+            
+            if (playerAttackRange != null)
+            {
+                playerAttackRange.SetAttackRange(Range);
+            }
         }
         public void InitialRandomStats()
         {
