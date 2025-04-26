@@ -85,7 +85,7 @@ public class GameUIManager : MonoBehaviour
         {
             enemyUI.SetActive(true);
             canvasGroup.alpha = 0;
-            enemyUI.transform.DOMoveX(600, 0.2f).SetEase(Ease.OutCubic);
+            enemyUI.transform.DOMoveX(900, 0.2f).SetEase(Ease.OutCubic);
             canvasGroup.DOFade(1, 1f).SetEase(Ease.OutCubic).OnComplete(() =>
             {
             });
