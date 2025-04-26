@@ -8,6 +8,13 @@ public class PlayerUIController : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // Check if the GameObject has the "Player" tag
+        if (!CompareTag("Player"))
+        {
+            Debug.Log("Click ignored: GameObject is not tagged as 'Player'.");
+            return;
+        }
+
         if (!canClick)
         {
             Debug.Log("Click blocked: cooldown active.");
@@ -15,6 +22,7 @@ public class PlayerUIController : MonoBehaviour
         }
 
         StartCoroutine(ClickCooldown());
+
         // Check if the mouse is over the collider
         BoxCollider collider = GetComponent<BoxCollider>();
 
@@ -24,7 +32,7 @@ public class PlayerUIController : MonoBehaviour
             return;
         }
 
-        if (collider != null && collider.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity))
+        if (collider.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, Mathf.Infinity))
         {
             // Call the function to handle the click event
             Debug.Log("Player UI Clicked");
@@ -35,7 +43,7 @@ public class PlayerUIController : MonoBehaviour
     private IEnumerator ClickCooldown()
     {
         canClick = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         canClick = true;
     }
 }
