@@ -61,7 +61,7 @@ public class Agent : MonoBehaviour
         if (aiData.currentTarget != null)
         {
             float distance = Vector3.Distance(transform.position, aiData.currentTarget.transform.position);
-            if (distance <= enemyAI.attackDistance)
+            if (distance <= playerBehaviour.Range)
             {
                 aiData.currentTarget.GetComponent<Player>().TakeDamage(10);
             }

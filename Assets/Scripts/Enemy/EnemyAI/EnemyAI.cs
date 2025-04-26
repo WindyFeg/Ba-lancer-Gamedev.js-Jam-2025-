@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Base;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,9 +17,7 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField]
     private float detectionDelay = 0.05f, aiUpdateDelay = 0.06f, attackDelay = 1.5f;
-
-    [SerializeField]
-    public float attackDistance = 0.5f;
+    private PlayerBehaviour playerBehaviour;
 
     // Inputs sent from the Enemy AI to the Enemy controller
     public UnityEvent OnAttackPressed;
@@ -36,6 +35,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        playerBehaviour = GetComponent<PlayerBehaviour>();
         InvokeRepeating("PerformDetection", 0, detectionDelay);
     }
 
@@ -81,7 +81,7 @@ public class EnemyAI : MonoBehaviour
         float distance = Vector3.Distance(new Vector3(aiData.currentTarget.position.x, 0, aiData.currentTarget.position.z),
                                           new Vector3(transform.position.x, 0, transform.position.z));
 
-        if (distance < attackDistance)
+        if (distance < playerBehaviour.Range)
         {
             movementInput = Vector3.zero;
             OnAttackPressed?.Invoke();
