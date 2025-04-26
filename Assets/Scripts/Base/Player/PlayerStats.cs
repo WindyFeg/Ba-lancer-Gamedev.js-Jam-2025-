@@ -170,7 +170,7 @@ public class PlayerStats : EntityStatsBase
              Destroy(gameObject);
          }
         Debug.Log("Wait " + delay);
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(delay + delay);
         GameManager.Instance.CheckNextLevel();
      }
 
