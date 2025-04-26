@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
 
-public abstract class EntityStatsBase : MonoBehaviour
+[Serializable]
+public class EntityStatsBase : MonoBehaviour
 {
     public string EntityName { get; set; }
 
+    [SerializeField]
     private int _level = 1;
     public int Level
     {
@@ -21,6 +23,7 @@ public abstract class EntityStatsBase : MonoBehaviour
             }
         }
     }
+    [SerializeField]
 
     private float _maxHealth;
     public float MaxHealth
@@ -36,6 +39,7 @@ public abstract class EntityStatsBase : MonoBehaviour
             _maxHealth = value;
         }
     }
+    [SerializeField]
 
     private float _currentHealth;
     public float CurrentHealth
@@ -43,6 +47,7 @@ public abstract class EntityStatsBase : MonoBehaviour
         get => _currentHealth;
         set => _currentHealth = value;
     }
+    [SerializeField]
 
     private float _attackDamage;
     public float AttackDamage
@@ -58,6 +63,7 @@ public abstract class EntityStatsBase : MonoBehaviour
             _attackDamage = value;
         }
     }
+    [SerializeField]
 
     private float _attackSpeed;
     public float AttackSpeed
@@ -73,6 +79,7 @@ public abstract class EntityStatsBase : MonoBehaviour
             _attackSpeed = value;
         }
     }
+    [SerializeField]
 
     private float _armor;
     public float Armor
@@ -88,6 +95,7 @@ public abstract class EntityStatsBase : MonoBehaviour
             _armor = value;
         }
     }
+    [SerializeField]
     
     private float _speed;
     public float Speed
@@ -102,6 +110,7 @@ public abstract class EntityStatsBase : MonoBehaviour
             _speed = value;
         }
     }
+    [SerializeField]
     
     private float _range;
     public float Range

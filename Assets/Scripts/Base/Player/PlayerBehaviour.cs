@@ -4,14 +4,8 @@ using UnityEngine.UI;
 
 namespace Base
 {
-    public class PlayerBehaviour : MonoBehaviour
+    public class PlayerBehaviour : PlayerStats
     {
-        [SerializeField] private int fakeAtk;
-        [SerializeField] private int fakeHp;
-        [SerializeField] private int fakeDef;
-        [SerializeField] private int fakeAtkSpeed;
-        [SerializeField] private int fakeSpeed;
-        [SerializeField] private int fakeRange;
         
         [Header("Sliders")]
         [SerializeField] private Slider attackSlider;
@@ -61,12 +55,12 @@ namespace Base
             };
             
             // Set initial values
-            stats.AttackDamage = fakeAtk;
-            stats.MaxHealth = fakeHp;
-            stats.Armor = fakeDef;
-            attackSlider.value = fakeAtk;
-            hpSlider.value = fakeHp;
-            defSlider.value = fakeDef;
+            stats.AttackDamage = this.AttackDamage;
+            stats.MaxHealth = this.MaxHealth;
+            stats.Armor = this.Armor;
+            attackSlider.value = this.AttackDamage;
+            hpSlider.value = this.MaxHealth;
+            defSlider.value = this.Armor;
         }
         private void Awake()
         {
