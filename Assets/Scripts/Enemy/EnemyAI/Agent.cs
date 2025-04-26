@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Base;
 using Game;
 using UnityEngine;
 
@@ -18,11 +19,13 @@ public class Agent : MonoBehaviour
     private EnemyAI enemyAI;
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint;
+    private PlayerBehaviour playerBehaviour;
     void Start()
     {
         aiData = GetComponent<AIData>();
         enemyAI = GetComponent<EnemyAI>();
         playerSpine = GetComponent<ModelSpine>();
+        playerBehaviour = GetComponent<PlayerBehaviour>();
     }
     private void Update()
     {
