@@ -35,6 +35,7 @@ public class MapManager : MonoBehaviour
         foreach (GameObject map in mapPrefabs)
         {
             map.SetActive(false);
+            
         }
 
         Debug.Log("Selected Map: " + selectedMap.name);

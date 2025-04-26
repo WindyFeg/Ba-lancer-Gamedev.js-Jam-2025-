@@ -76,6 +76,15 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("NEXT MAP");
+        var scoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<TMPro.TextMeshProUGUI>();
+        if (int.TryParse(scoreText.text, out int currentScore))
+        {
+            scoreText.text = (currentScore + 1).ToString();
+        }
+        else
+        {
+            Debug.LogError("Failed to parse score text to an integer.");
+        }
         MapManager.Instance.NextMap();
       
     }
