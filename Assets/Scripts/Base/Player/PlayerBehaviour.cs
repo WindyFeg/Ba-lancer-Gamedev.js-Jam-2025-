@@ -46,16 +46,16 @@ namespace Base
             OnAttackSpeedChanged += (oldVal, newVal) => { atkSpeedSlider.value = newVal; };
             OnSpeedChanged += (oldVal, newVal) => { speedSlider.value = newVal; };
             OnRangeChanged += (oldVal, newVal) => { rangeSlider.value = newVal; };
-
-            // Set initial values
-            AttackDamage = this.AttackDamage;
-            MaxHealth = this.MaxHealth;
-            Armor = this.Armor;
-            attackSlider.value = this.AttackDamage;
-            hpSlider.value = this.MaxHealth;
-            defSlider.value = this.Armor;
         }
 
+        private void Awake()
+        {
+            // Set up Base Stats - [Linked Stats]
+            if (attackSlider == null) return;
+            ForceUIUpdate();
+            InitialRandomStats();
+            SetUpListeners();
+        }
 
         // Listeners for the sliders to call OnStatSliderChanged when their values change.
         private void SetUpListeners()
@@ -106,49 +106,54 @@ namespace Base
                         break;
                 }
             }
+            
+            ForceUIUpdate();
         }
 
-        public void InitialRandomStats()
+        private void ForceUIUpdate()
         {
-            var pairs = GenerateRandomPairs();
-            linkedStats = new List<StatConfig>();
-            foreach (var pair in pairs)
-            {
-                linkedStats.Add(new StatConfig
-                {
-                    BaseStat = (StatType)pair.Item1,
-                    LinkedStat = new[] { (StatType)pair.Item2 },
-                    Ratio = 1f
-                });
-                
-                // Reverse the pair for the linked stat
-                linkedStats.Add(new StatConfig
-                {
-                    BaseStat = (StatType)pair.Item2,
-                    LinkedStat = new[] { (StatType)pair.Item1 },
-                    Ratio = 1f
-                });
-            }
+            attackSlider.value = AttackDamage;
+            hpSlider.value = MaxHealth;
+            defSlider.value = Armor;
+            atkSpeedSlider.value = AttackSpeed;
+            speedSlider.value = Speed;
+            rangeSlider.value = Range;
         }
-
-        private List<(int, int)> GenerateRandomPairs()
+        public void InitialRandomStats()
         {
             List<int> numbers = new List<int> { 0, 1, 2, 3, 4, 5 };
 
-            // Shuffle the numbers
+            // Shuffle
             for (int i = 0; i < numbers.Count; i++)
             {
-                int randomIndex = Random.Range(i, numbers.Count);
-                (numbers[i], numbers[randomIndex]) = (numbers[randomIndex], numbers[i]);
+                int rand = Random.Range(0, numbers.Count);
+                (numbers[i], numbers[rand]) = (numbers[rand], numbers[i]);
             }
 
-            List<(int, int)> pairs = new List<(int, int)>();
-            for (int i = 0; i < numbers.Count; i += 2)
+            // Put into Queue
+            Queue<int> queue = new Queue<int>(numbers);
+            linkedStats = new List<StatConfig>();
+
+            // Dequeue in pairs
+            while (queue.Count > 0)
             {
-                pairs.Add((numbers[i], numbers[i + 1]));
+                int a = queue.Dequeue();
+                int b = queue.Dequeue();
+                linkedStats.Add(new StatConfig
+                {
+                    BaseStat = (StatType)a,
+                    LinkedStat = new[] { (StatType)b },
+                    Ratio = 1f
+                });
+                
+                linkedStats.Add(new StatConfig
+                {
+                    BaseStat = (StatType)b,
+                    LinkedStat = new[] { (StatType)a },
+                    Ratio = 1f
+                });
             }
-
-            return pairs;
+            SetUpListeners();
         }
     }
 }
