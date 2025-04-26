@@ -1,4 +1,5 @@
 using System.Collections;
+using Base;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -76,7 +77,7 @@ private void OnHitGround()
 
     if (distanceXZ <= impactRadius)
     {
-        Player.instance.TakeDamage(damage);
+        Player.instance.gameObject.GetComponent<PlayerBehaviour>().TakeDamage(damage);
         Destroy(gameObject);
         return;
     }

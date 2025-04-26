@@ -1,7 +1,7 @@
 using Base;
 using UnityEngine;
 
-public class Player : PlayerStats
+public class Player : MonoBehaviour
 {
     public const float AttackDelayTime = 3f;
     [SerializeField] private PlayerBehaviour playerBehaviour;
@@ -26,11 +26,11 @@ public class Player : PlayerStats
         TryAttack();
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            TakeDamage(10);
+
         }
         if (Input.GetKeyDown(KeyCode.F2))
         {       
-            Die();
+
         }
     }
 
