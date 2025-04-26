@@ -36,7 +36,7 @@ public class GameUIManager : MonoBehaviour
             {
                 statUI.SetActive(false);
             });
-            CameraManager.Instance.ZoomIntoPlayer();
+            CameraManager.Instance.ZoomOutFromPlayer();
             EndSlowMotion();
         }
         else
@@ -47,7 +47,7 @@ public class GameUIManager : MonoBehaviour
             canvasGroup.DOFade(1, 1f).SetEase(Ease.OutCubic).OnComplete(() =>
             {
             });
-            CameraManager.Instance.ZoomOutFromPlayer();
+            CameraManager.Instance.ZoomIntoPlayer();
             StartSlowMotion();
         }
     }
