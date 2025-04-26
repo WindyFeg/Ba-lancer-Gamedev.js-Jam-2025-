@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Base;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,14 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private Slider atkSpeedSlider;
     [SerializeField] private Slider speedSlider;
     [SerializeField] private Slider rangeSlider;
+    
+    [Header("Stats Value")]
+    [SerializeField] private TextMeshProUGUI attackSliderText;
+    [SerializeField] private TextMeshProUGUI hpSliderText;
+    [SerializeField] private TextMeshProUGUI defSliderText;
+    [SerializeField] private TextMeshProUGUI atkSpeedSliderText;
+    [SerializeField] private TextMeshProUGUI speedSliderText;
+    [SerializeField] private TextMeshProUGUI rangeSliderText;
 
     private void Awake()
     {
@@ -127,7 +136,13 @@ public class GameUIManager : MonoBehaviour
         atkSpeedSlider.value = enemyUIController.AttackSpeed;
         speedSlider.value = enemyUIController.Speed;
         rangeSlider.value = enemyUIController.Range;
-
+        
+        attackSliderText.text = enemyUIController.AttackDamage + "";
+        hpSliderText.text = enemyUIController.CurrentHealth + "";
+        defSliderText.text = enemyUIController.Armor + "";
+        atkSpeedSliderText.text = enemyUIController.AttackSpeed + "";
+        speedSliderText.text = enemyUIController.Speed + "";
+        rangeSliderText.text = enemyUIController.Range + "";
     }
 
     private void UpdateEnemyStats(PlayerBehaviour enemyUIController)
@@ -138,6 +153,13 @@ public class GameUIManager : MonoBehaviour
         enemyUIController.AttackSpeed = atkSpeedSlider.value;
         enemyUIController.Speed = speedSlider.value;
         enemyUIController.Range = rangeSlider.value;
+        
+        attackSliderText.text = enemyUIController.AttackDamage + "";
+        hpSliderText.text = enemyUIController.CurrentHealth + "";
+        defSliderText.text = enemyUIController.Armor + "";
+        atkSpeedSliderText.text = enemyUIController.AttackSpeed + "";
+        speedSliderText.text = enemyUIController.Speed + "";
+        rangeSliderText.text = enemyUIController.Range + "";
     }
 
 
