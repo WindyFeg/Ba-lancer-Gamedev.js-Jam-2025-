@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Base;
 using UnityEngine;
 
 public class Player : PlayerStats
 {
-    public float attackRange = 2f;
-    public float attackSpeed = 1f;
+    [SerializeField] private PlayerBehaviour playerBehaviour;
+    
     public LayerMask enemyLayer;
     public int maxHealth = 100;
 
@@ -29,16 +30,16 @@ public class Player : PlayerStats
             TakeDamage(10);
         }
         if (Input.GetKeyDown(KeyCode.F2))
-        {
+        {       
             Die();
         }
     }
 
     void TryAttack()
     {
-        if (Time.time >= lastAttackTime + attackSpeed)
+        if (Time.time >= lastAttackTime + (1.5f / playerBehaviour.AttackSpeed))
         {
-            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
+            Collider[] hitEnemies = Physics.OverlapSphere(transform.position, playerBehaviour.Range, enemyLayer);
             if (hitEnemies.Length > 0)
             {
                 Attack(hitEnemies);
@@ -61,6 +62,6 @@ public class Player : PlayerStats
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, playerBehaviour.Range);
     }
 }

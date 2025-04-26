@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Base;
 using UnityEngine;
 using UnityEngine.UI;
 namespace Game
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField] private PlayerBehaviour playerBehaviour;
         // Start is called before the first frame update
-
-
-        [SerializeField] public float moveSpeed;
         private ModelSpine playerSpine;
         private Rigidbody rb;
         private float xdir, zdir;
 
         private bool isMoving = false;
+        private float _moveSpeedMultiplier = 2f;
 
 
         private void Awake()
         {
-    
-
+            
         }
         private void Start()
         {
@@ -45,7 +44,7 @@ namespace Game
         if (Time.timeScale == 0) return;
 
         Vector3 movement = new Vector3(xdir, 0f, zdir).normalized;
-        Vector3 newPosition = rb.position + movement * moveSpeed * Time.deltaTime;
+        Vector3 newPosition = rb.position + movement * (playerBehaviour.Speed * _moveSpeedMultiplier * Time.deltaTime);
         rb.MovePosition(newPosition);
 
         if (movement.magnitude > 0)
