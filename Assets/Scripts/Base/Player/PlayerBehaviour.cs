@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Game;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,20 +9,29 @@ namespace Base
     public class PlayerBehaviour : PlayerStats
     {
         [SerializeField] private PlayerAttackRange playerAttackRange;
-        [Header("Sliders")] [SerializeField] public Slider attackSlider;
+        [Header("Sliders")]
+        [SerializeField] public Slider attackSlider;
         [SerializeField] public Slider hpSlider;
         [SerializeField] public Slider defSlider;
         [SerializeField] public Slider atkSpeedSlider;
         [SerializeField] public Slider speedSlider;
         [SerializeField] public Slider rangeSlider;
+        
+        [Header("Stats Value")]
+        [SerializeField] private TextMeshProUGUI attackSliderText;
+        [SerializeField] private TextMeshProUGUI hpSliderText;
+        [SerializeField] private TextMeshProUGUI defSliderText;
+        [SerializeField] private TextMeshProUGUI atkSpeedSliderText;
+        [SerializeField] private TextMeshProUGUI speedSliderText;
+        [SerializeField] private TextMeshProUGUI rangeSliderText;
 
         private Dictionary<StatType, float> lastValidStatValues = new();
 
         private void Awake()
         {
+            InitialRandomStats();
             if (attackSlider == null) return;
             ForceUIUpdate();
-            InitialRandomStats();
             SetUpListeners();
         }
 
@@ -109,6 +119,18 @@ namespace Base
             atkSpeedSlider.value = AttackSpeed;
             speedSlider.value = Speed;
             rangeSlider.value = Range;
+
+            attackSliderText.text = AttackDamage + "";
+            hpSliderText.text = MaxHealth + "";
+            defSliderText.text = Armor + "";
+            atkSpeedSliderText.text = AttackSpeed + "";
+            speedSliderText.text = Speed + "";
+            rangeSliderText.text = Range + "";
+            
+            if (playerAttackRange != null)
+            {
+                playerAttackRange.SetAttackRange(Range);
+            }
         }
         public void InitialRandomStats()
         {
@@ -144,7 +166,6 @@ namespace Base
                     Ratio = 1f
                 });
             }
-            SetUpListeners();
         }
     }
 }
