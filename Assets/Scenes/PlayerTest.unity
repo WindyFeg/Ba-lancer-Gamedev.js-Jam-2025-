@@ -344,6 +344,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1332014682992660685, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: _animationName
+      value: 01 - Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332014682992660685, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: skeletonDataAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: cc6a8b029b76e2444a2fd75537cc9168, type: 2}
+    - target: {fileID: 1509958378550666560, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cfd1114174c0ee242b1b8232643494f3, type: 2}
     - target: {fileID: 2570242252755118469, guid: 53f961a183a92f1488be59bd68833046, type: 3}
       propertyPath: m_Name
       value: enemy-1-root
@@ -351,6 +363,42 @@ PrefabInstance:
     - target: {fileID: 2570242252755118469, guid: 53f961a183a92f1488be59bd68833046, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241056779848178733, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: hit_anim
+      value: 03 - Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241056779848178733, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: death_anim
+      value: 04 - Die
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241056779848178733, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: attack_anim
+      value: 02 - Attack 2 - Club
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241056779848178733, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: move_up_anim
+      value: 05 - Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241056779848178733, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: up_idle_anim
+      value: 01 - Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241056779848178733, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: down_idle_anim
+      value: 01 - Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241056779848178733, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: mode_side_anim
+      value: 05 - Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241056779848178733, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: move_down_anim
+      value: 05 - Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241056779848178733, guid: 53f961a183a92f1488be59bd68833046, type: 3}
+      propertyPath: side_idle_anim
+      value: 01 - Idle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -667,6 +715,10 @@ PrefabInstance:
     - target: {fileID: 2570242252755118469, guid: 59366999aa4894748af005c71f6f7f57, type: 3}
       propertyPath: m_Name
       value: enemy-2-root
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570242252755118469, guid: 59366999aa4894748af005c71f6f7f57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

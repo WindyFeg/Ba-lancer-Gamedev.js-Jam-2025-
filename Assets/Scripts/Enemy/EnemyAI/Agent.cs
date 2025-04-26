@@ -37,7 +37,7 @@ public class Agent : MonoBehaviour
     {
         playerSpine.attack_start();
         float attackDuration = playerSpine.get_duration(playerSpine.attack_anim);
-        Invoke("Attack", attackDuration);
+        StartCoroutine(Attack(attackDuration));
     }
 
     public void PerformRangeAttack()
@@ -49,18 +49,21 @@ public class Agent : MonoBehaviour
         proj.Launch(aiData.currentTarget);
     }
 
-    public void Attack()
+    IEnumerator Attack(float attackDuration)
     {
-        if (aiData.currentTarget == null) return;
+        yield return new WaitForSeconds(attackDuration + 0.3f); // Delay the attack to match the animation duration
 
-        float distance = Vector3.Distance(transform.position, aiData.currentTarget.transform.position);
-        if (distance <= enemyAI.attackDistance)
+        if (aiData.currentTarget != null)
         {
-            aiData.currentTarget.GetComponent<Player>().TakeDamage(10);
-        }
-        else
-        {
-            Debug.Log("Target out of range, attack missed.");
+            float distance = Vector3.Distance(transform.position, aiData.currentTarget.transform.position);
+            if (distance <= enemyAI.attackDistance)
+            {
+                aiData.currentTarget.GetComponent<Player>().TakeDamage(10);
+            }
+            else
+            {
+                Debug.Log("Target out of range, attack missed.");
+            }
         }
     }
 
