@@ -67,7 +67,7 @@ public class MapManager : MonoBehaviour
             int randomIndex = Random.Range(0, enemyPrefabs.Length);
             GameObject selectedEnemy = enemyPrefabs[randomIndex];
             Vector3 randomPosition = new Vector3(Random.Range(-20, 10), 0.6f, Random.Range(-10, 15));
-            Instantiate(selectedEnemy, randomPosition, Quaternion.Euler(0, 45, 0));
+            Instantiate(selectedEnemy, randomPosition, Quaternion.Euler(45, 0, 0));
         }
     }
 
