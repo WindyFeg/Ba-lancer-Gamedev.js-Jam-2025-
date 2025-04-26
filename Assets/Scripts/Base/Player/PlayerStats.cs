@@ -13,6 +13,7 @@ public class PlayerStats : EntityStatsBase
     public const float StatMax = 10f;
 
     private bool isSyncing = false;
+    [SerializeField] private GameObject popupTextPrefab;
 
     public void ApplyStatChange(StatType stat, float newValue)
     {
@@ -109,6 +110,7 @@ public class PlayerStats : EntityStatsBase
     /// </summary>
     public void TakeDamage(float damage) {
         GetComponent<ModelSpine>().hit_start();
+        GameObject popupText;
           if (this.tag == "Player")
         {
             Debug.Log($"Player taking damage: {damage} - Reduce by {Armor} DEF = {damage - Armor}");
@@ -119,10 +121,13 @@ public class PlayerStats : EntityStatsBase
         }
         if (damage < Armor)
         {
-            Debug.Log("Damage is less than armor, no damage taken.");
+            popupText = Instantiate(popupTextPrefab, transform.position + new Vector3(0, 3f), transform.rotation);
+            popupText.GetComponent<PopupText>().ShowText("Blocked");
             return;
         }
         CurrentHealth -= (damage - Armor);
+        popupText = Instantiate(popupTextPrefab, transform.position + new Vector3(0, 3f), transform.rotation);
+        popupText.GetComponent<PopupText>().ShowText($"{damage - Armor}");
         if (CurrentHealth <= 0)
         {
             Die();

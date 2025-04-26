@@ -78,6 +78,8 @@ private void OnHitGround()
     if (distanceXZ <= impactRadius)
     {
         Player.instance.TakeDamage(damage);
+        Destroy(gameObject);
+        return;
     }
     Instantiate(explosionParticles, new Vector3(landedPosition.x, 0f, landedPosition.z), Quaternion.identity);
     Destroy(gameObject);

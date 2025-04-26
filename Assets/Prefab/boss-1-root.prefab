@@ -330,7 +330,6 @@ MonoBehaviour:
   detectionDelay: 0.05
   aiUpdateDelay: 0.06
   attackDelay: 1
-  attackDistance: 5
   OnAttackPressed:
     m_PersistentCalls:
       m_Calls:
@@ -436,6 +435,7 @@ MonoBehaviour:
   - BaseStat: 0
     LinkedStat: 03000000
     Ratio: 0
+  popupTextPrefab: {fileID: 8549641869758960240, guid: 66b6dce344a40d34b9fb37fb860b503f, type: 3}
   playerAttackRange: {fileID: 0}
   attackSlider: {fileID: 0}
   hpSlider: {fileID: 0}
