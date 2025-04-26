@@ -49,7 +49,7 @@ public class EntityStatsBase : MonoBehaviour
         {
             if (value < 0)
             {
-                value = 0;
+                value = -1;
             }
             if (value > MaxHealth)
             {

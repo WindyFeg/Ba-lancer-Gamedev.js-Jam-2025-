@@ -163,9 +163,10 @@ public class PlayerStats : EntityStatsBase
          else if (this.tag == "Enemy")
          {
              Destroy(gameObject);
-             GameManager.Instance.CheckNextLevel();
          }
-         // Handle player death logic here
+        Debug.Log("Wait " + delay);
+        yield return new WaitForSeconds(delay);
+        GameManager.Instance.CheckNextLevel();
      }
 
     /// <summary>
