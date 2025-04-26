@@ -37,6 +37,7 @@ public class GameUIManager : MonoBehaviour
         CanvasGroup canvasGroup = statUI.GetComponent<CanvasGroup>();
         if (canvasGroup == null)
         {
+
             canvasGroup = statUI.AddComponent<CanvasGroup>();
         }
 
@@ -91,7 +92,6 @@ public class GameUIManager : MonoBehaviour
             canvasGroup.DOFade(1, 1f).SetEase(Ease.OutCubic).OnComplete(() =>
             {
             });
-            CameraManager.Instance.ZoomIntoPlayer();
             StartSlowMotion();
         }
     }

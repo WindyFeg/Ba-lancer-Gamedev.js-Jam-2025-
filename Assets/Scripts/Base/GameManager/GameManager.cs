@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
 
     public void CheckNextLevel()
     {
-
         if (MapManager.Instance != null)
         {
             MapManager.Instance.NextMap();

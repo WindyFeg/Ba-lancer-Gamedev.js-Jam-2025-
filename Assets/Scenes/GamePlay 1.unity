@@ -966,6 +966,7 @@ MonoBehaviour:
   - BaseStat: 0
     LinkedStat: 03000000
     Ratio: 0
+  playerAttackRange: {fileID: 0}
   attackSlider: {fileID: 202174480}
   hpSlider: {fileID: 1413012613}
   defSlider: {fileID: 2117780308}
@@ -3033,7 +3034,7 @@ RectTransform:
   m_Children:
   - {fileID: 149670433}
   - {fileID: 1236288691}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1589754176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4628,6 +4629,7 @@ MonoBehaviour:
   _speed: 0
   _range: 0
   linkedStats: []
+  playerAttackRange: {fileID: 0}
   attackSlider: {fileID: 853864126}
   hpSlider: {fileID: 1929665380}
   defSlider: {fileID: 937635520}
@@ -5270,7 +5272,8 @@ Transform:
   m_LocalPosition: {x: 448.02438, y: 424.04163, z: 0.33190024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 896396018}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1592964369
@@ -8423,4 +8426,3 @@ SceneRoots:
   - {fileID: 1589754176}
   - {fileID: 306478266}
   - {fileID: 997008956}
-  - {fileID: 896396018}
