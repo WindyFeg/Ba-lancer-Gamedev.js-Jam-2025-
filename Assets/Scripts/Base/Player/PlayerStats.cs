@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using Base;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : EntityStatsBase
 {
@@ -107,15 +109,59 @@ public class PlayerStats : EntityStatsBase
     /// </summary>
     public void TakeDamage(float damage) {
         GetComponent<ModelSpine>().hit_start();
-        Debug.Log($"Taking damage: {damage} - Reduce by {Armor} DEF = {damage - Armor}");
+          if (this.tag == "Player")
+        {
+            Debug.Log($"Player taking damage: {damage} - Reduce by {Armor} DEF = {damage - Armor}");
+        }
+        else if (this.tag == "Enemy")
+        {
+            Debug.Log($"Enemy taking damage: {damage} - Reduce by {Armor} DEF = {damage - Armor}");
+        }
+
         CurrentHealth -= (damage - Armor);
+        if (CurrentHealth <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            Debug.Log($"Current Health: {CurrentHealth}");
+        }   
     }
 
     /// <summary>
     /// Handle the death of the entity. 
     /// This method should be overridden in derived classes to implement specific death behavior.
     /// </summary>
-    public void Die() { }
+    public void Die() {
+        ModelSpine spine = GetComponent<ModelSpine>();
+        if (this.tag == "Player")
+        {
+            Debug.Log("Player is dead!");
+            spine.death_start();
+            StartCoroutine(DieCoroutine(spine.get_duration(spine.death_anim)));
+        }
+        else if (this.tag == "Enemy")
+        {
+            spine.death_start();
+            Debug.Log("Enemy is dead!");
+            StartCoroutine(DieCoroutine(spine.get_duration(spine.death_anim)));
+        }
+     }
+     IEnumerator DieCoroutine(float delay)
+     {
+         yield return new WaitForSeconds(delay);
+         if (this.tag == "Player")
+         {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+         }
+         else if (this.tag == "Enemy")
+         {
+             Destroy(gameObject);
+         }
+         // Handle player death logic here
+     }
 
     /// <summary>
     /// Damage the target entity. 

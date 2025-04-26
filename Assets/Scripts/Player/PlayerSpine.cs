@@ -24,7 +24,7 @@ public class ModelSpine : MonoBehaviour, IModelSpine
     [SerializeField][SpineAnimation] string move_down_anim;
     [SerializeField][SpineAnimation]  public string attack_anim;
     [SerializeField][SpineAnimation] string hit_anim;
-    [SerializeField][SpineAnimation] string death_anim;
+    [SerializeField][SpineAnimation] public string death_anim;
 
     string currentAnimName;
 
@@ -52,6 +52,7 @@ public class ModelSpine : MonoBehaviour, IModelSpine
 
     public void hit_start()
     {
+        if (isAttacking) return; // avoid overlap
         cur_coroutine = StartCoroutine(play_hit_cr());
     }
 

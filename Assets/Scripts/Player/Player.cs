@@ -52,7 +52,6 @@ public class Player : PlayerStats
         foreach (Collider enemy in enemies)
         {
             Debug.Log("Attacking: " + enemy.name);
-            enemy.GetComponent<ModelSpine>().hit_start();
             enemy.GetComponent<PlayerBehaviour>().TakeDamage(playerBehaviour.AttackDamage);
         }
         playerSpine.attack_start();
