@@ -45,7 +45,19 @@ public class EntityStatsBase : MonoBehaviour
     public float CurrentHealth
     {   
         get => _currentHealth;
-        set => _currentHealth = value;
+        set
+        {
+            if (value < 0)
+            {
+                value = 0;
+            }
+            if (value > MaxHealth)
+            {
+                value = MaxHealth;
+            }
+            OnMaxHealthChanged?.Invoke(_currentHealth, value);
+            _currentHealth = value;
+        }
     }
     [SerializeField]
 
