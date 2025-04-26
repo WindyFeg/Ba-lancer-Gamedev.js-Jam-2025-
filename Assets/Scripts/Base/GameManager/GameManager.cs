@@ -64,4 +64,17 @@ public class GameManager : MonoBehaviour
 
         CurrentState.EnterState(this);
     }
+
+    public void CheckNextLevel()
+    {
+
+        if (MapManager.Instance != null)
+        {
+            MapManager.Instance.NextMap();
+        }
+        else
+        {
+            Debug.LogError("MapManager instance is null. Make sure it is initialized before calling this method.");
+        }
+    }
 }
