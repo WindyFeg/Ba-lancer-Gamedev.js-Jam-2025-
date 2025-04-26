@@ -68,7 +68,6 @@ public class Projectile : MonoBehaviour
 
 private void OnHitGround()
 {
-
     Vector3 landedPosition = transform.position;
     Vector3 playerXZ = new Vector3(Player.instance.transform.position.x, 0f, Player.instance.transform.position.z);
     Vector3 impactXZ = new Vector3(landedPosition.x, 0f, landedPosition.z);

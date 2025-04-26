@@ -15,6 +15,8 @@ public class SpawnPlayerAtHelper : MonoBehaviour
             adjustedPosition.y += 1.0f; // Adjust the Y position to avoid clipping into the ground
             player.transform.position = adjustedPosition;
 
+            Camera.main.transform.position = new Vector3(0,0,-35);
+
             Debug.Log("Player spawned at: " + spawnPosition);
         }
         else
