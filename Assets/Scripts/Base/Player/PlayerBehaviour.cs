@@ -18,19 +18,28 @@ namespace Base
         [SerializeField] public Slider rangeSlider;
         
         [Header("Stats Value")]
-        [SerializeField] private TextMeshProUGUI attackSliderText;
-        [SerializeField] private TextMeshProUGUI hpSliderText;
-        [SerializeField] private TextMeshProUGUI defSliderText;
-        [SerializeField] private TextMeshProUGUI atkSpeedSliderText;
-        [SerializeField] private TextMeshProUGUI speedSliderText;
-        [SerializeField] private TextMeshProUGUI rangeSliderText;
+        [SerializeField] public TextMeshProUGUI attackSliderText;
+        [SerializeField] public TextMeshProUGUI hpSliderText;
+        [SerializeField] public TextMeshProUGUI defSliderText;
+        [SerializeField] public TextMeshProUGUI atkSpeedSliderText;
+        [SerializeField] public TextMeshProUGUI speedSliderText;
+        [SerializeField] public TextMeshProUGUI rangeSliderText;
 
         private Dictionary<StatType, float> lastValidStatValues = new();
 
         private void Awake()
         {
             InitialRandomStats();
-            if (attackSlider == null) return;
+            if (attackSlider == null)
+            {
+                // =)) enemy
+                RandomEnemyStats();
+                return;
+            }
+            else
+            {
+                RandomPlayerStats();
+            }
             ForceUIUpdate();
             SetUpListeners();
         }
@@ -59,7 +68,7 @@ namespace Base
         }
 
         // Listeners for the sliders to call OnStatSliderChanged when their values change.
-        private void SetUpListeners()
+        public void SetUpListeners()
         {
             attackSlider.onValueChanged.AddListener(value => OnStatSliderChanged(StatType.ATK, value));
             hpSlider.onValueChanged.AddListener(value => OnStatSliderChanged(StatType.HP, value));
@@ -166,6 +175,26 @@ namespace Base
                     Ratio = 1f
                 });
             }
+        }
+
+        private void RandomPlayerStats()
+        {
+            AttackDamage = Random.Range(3, 6);
+            MaxHealth = Random.Range(3, 6);
+            Armor = Random.Range(3, 6);
+            AttackSpeed = Random.Range(3, 6);
+            Speed = Random.Range(3, 6);
+            Range = Random.Range(3, 6);
+        }
+        
+        private void RandomEnemyStats()
+        {
+            AttackDamage = Random.Range(4, 8);
+            MaxHealth = Random.Range(4, 8);
+            Armor = Random.Range(4, 8);
+            AttackSpeed = Random.Range(4, 8);
+            Speed = Random.Range(4, 8);
+            Range = Random.Range(4, 8);
         }
     }
 }

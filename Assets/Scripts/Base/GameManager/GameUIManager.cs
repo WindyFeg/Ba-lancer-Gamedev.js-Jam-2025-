@@ -100,6 +100,20 @@ public class GameUIManager : MonoBehaviour
             enemyUI.transform.DOMoveX(900, 0.2f).SetEase(Ease.OutCubic);
             canvasGroup.DOFade(1, 1f).SetEase(Ease.OutCubic).OnComplete(() =>
             {
+                enemyUIController.attackSlider = attackSlider;
+                enemyUIController.hpSlider = hpSlider;
+                enemyUIController.defSlider = defSlider;
+                enemyUIController.atkSpeedSlider = atkSpeedSlider;
+                enemyUIController.speedSlider = speedSlider;
+                enemyUIController.rangeSlider = rangeSlider;
+                    
+                enemyUIController.attackSliderText = attackSliderText;
+                enemyUIController.hpSliderText = hpSliderText;
+                enemyUIController.defSliderText = defSliderText;
+                enemyUIController.atkSpeedSliderText = atkSpeedSliderText;
+                enemyUIController.speedSliderText = speedSliderText;
+                enemyUIController.rangeSliderText = rangeSliderText;
+                enemyUIController.SetUpListeners();
             });
             StartSlowMotion();
         }
