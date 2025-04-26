@@ -11115,16 +11115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca48c7c4a1f938a4f8badf390fdeac2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: 1
-  _maxHealth: 0
-  _currentHealth: 0
-  _attackDamage: 0
-  _attackSpeed: 0
-  _armor: 0
-  _speed: 0
-  _range: 0
-  linkedStats: []
-  popupTextPrefab: {fileID: 8549641869758960240, guid: 66b6dce344a40d34b9fb37fb860b503f, type: 3}
   playerBehaviour: {fileID: 1928399889214881215}
   enemyLayer:
     serializedVersion: 2
@@ -11466,7 +11456,7 @@ MonoBehaviour:
   maxX: 20
   minX: -20
   maxY: 20
-  minY: -20
+  minY: -30
   moveSpeed: 3
   isFollowPlayer: 0
 --- !u!33 &8890671583819267130
