@@ -107,8 +107,9 @@ public class PlayerStats : EntityStatsBase
     /// </summary>
     public void TakeDamage(float damage) {
         GetComponent<ModelSpine>().hit_start();
-        Debug.Log("Taking damage: " + damage);
-     }
+        Debug.Log($"Taking damage: {damage} - Reduce by {Armor} DEF = {damage - Armor}");
+        CurrentHealth -= (damage - Armor);
+    }
 
     /// <summary>
     /// Handle the death of the entity. 

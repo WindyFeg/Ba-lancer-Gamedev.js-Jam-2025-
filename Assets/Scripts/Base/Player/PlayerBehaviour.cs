@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Game;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ namespace Base
     public class PlayerBehaviour : PlayerStats
     {
 
+        [SerializeField] private PlayerAttackRange playerAttackRange; 
         [Header("Sliders")]
         [SerializeField] public Slider attackSlider;
         [SerializeField] public Slider hpSlider;
@@ -102,6 +104,10 @@ namespace Base
             {
                 ApplyStatChange(stat, newValue);
                 lastValidStatValues[stat] = newValue; // Update last valid value
+                if (stat == StatType.RANGE && playerAttackRange != null)
+                {
+                    playerAttackRange.SetAttackRange(newValue);
+                }
                 Debug.Log($"Stat {stat} changed to {newValue}");
             }
             else

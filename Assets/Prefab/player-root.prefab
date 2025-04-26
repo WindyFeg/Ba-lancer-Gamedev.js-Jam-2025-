@@ -259,14 +259,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: 1
-  _maxHealth: 0
-  _currentHealth: 0
-  _attackDamage: 0
-  _attackSpeed: 0
-  _armor: 0
-  _speed: 0
-  _range: 0
+  _maxHealth: 5
+  _currentHealth: 5
+  _attackDamage: 5
+  _attackSpeed: 5
+  _armor: 5
+  _speed: 5
+  _range: 5
   linkedStats: []
+  playerAttackRange: {fileID: 6066788645858966877}
   attackSlider: {fileID: 0}
   hpSlider: {fileID: 0}
   defSlider: {fileID: 0}
@@ -383,7 +384,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268337, y: -0, z: -0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6800558140731844911}

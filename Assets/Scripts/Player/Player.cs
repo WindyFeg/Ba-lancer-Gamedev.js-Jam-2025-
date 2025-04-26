@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using Base;
 using UnityEngine;
 
 public class Player : PlayerStats
 {
+    public const float AttackDelayTime = 3f;
     [SerializeField] private PlayerBehaviour playerBehaviour;
     
     public LayerMask enemyLayer;
@@ -37,7 +36,7 @@ public class Player : PlayerStats
 
     void TryAttack()
     {
-        if (Time.time >= lastAttackTime + (1.5f / playerBehaviour.AttackSpeed))
+        if (Time.time >= lastAttackTime + (AttackDelayTime / playerBehaviour.AttackSpeed))
         {
             Collider[] hitEnemies = Physics.OverlapSphere(transform.position, playerBehaviour.Range, enemyLayer);
             if (hitEnemies.Length > 0)
@@ -54,7 +53,7 @@ public class Player : PlayerStats
         {
             Debug.Log("Attacking: " + enemy.name);
             enemy.GetComponent<ModelSpine>().hit_start();
-            
+            enemy.GetComponent<PlayerBehaviour>().TakeDamage(playerBehaviour.AttackDamage);
         }
         playerSpine.attack_start();
     }
