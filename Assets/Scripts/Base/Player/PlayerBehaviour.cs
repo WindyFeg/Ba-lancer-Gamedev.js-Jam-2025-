@@ -19,8 +19,8 @@ namespace Base
 
         private void Awake()
         {
-            // Set up Base Stats - [Linked Stats]
             if (attackSlider == null) return;
+            ForceUIUpdate();
             InitialRandomStats();
             SetUpListeners();
         }
@@ -46,15 +46,6 @@ namespace Base
             OnAttackSpeedChanged += (oldVal, newVal) => { atkSpeedSlider.value = newVal; };
             OnSpeedChanged += (oldVal, newVal) => { speedSlider.value = newVal; };
             OnRangeChanged += (oldVal, newVal) => { rangeSlider.value = newVal; };
-        }
-
-        private void Awake()
-        {
-            // Set up Base Stats - [Linked Stats]
-            if (attackSlider == null) return;
-            ForceUIUpdate();
-            InitialRandomStats();
-            SetUpListeners();
         }
 
         // Listeners for the sliders to call OnStatSliderChanged when their values change.
