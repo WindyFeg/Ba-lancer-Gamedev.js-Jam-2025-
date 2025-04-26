@@ -48,7 +48,7 @@ public class MapManager : MonoBehaviour
 
     public void NextMap()
     {
-        cameraTransform.DOMove(new Vector3(0, 0, -35), 1f).SetEase(Ease.InOutQuad);
+        // cameraTransform.position = new Vector3(0,0,-36);
         SpawnMap();
         SpawnEnemy();
     }

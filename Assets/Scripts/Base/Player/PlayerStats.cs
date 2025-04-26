@@ -163,10 +163,11 @@ public class PlayerStats : EntityStatsBase
          if (this.tag == "Player")
          {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+            Player.instance.gameObject.GetComponent<ModelSpine>().move_down_playing();
          }
          else if (this.tag == "Enemy")
          {
+            // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             GameManager.Instance.CheckNextLevel();
             Destroy(gameObject);
          }

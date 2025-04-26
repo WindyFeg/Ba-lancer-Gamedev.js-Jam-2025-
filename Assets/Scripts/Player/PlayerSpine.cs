@@ -56,9 +56,15 @@ public class ModelSpine : MonoBehaviour, IModelSpine
         cur_coroutine = StartCoroutine(play_hit_cr());
     }
 
-    public void death_start()
+public void death_start()
     {
-        play_animation_if_new(death_anim, false);
+        StartCoroutine(play_death_cr());
+    }
+    IEnumerator play_death_cr()
+    {
+        _cur_state.SetAnimation(0, death_anim, false).MixDuration = 0;
+        yield return new WaitForSeconds(get_duration(death_anim));
+        _cur_state.SetAnimation(0, down_idle_anim, false).MixDuration = 0;
     }
 
     IEnumerator play_hit_cr()
