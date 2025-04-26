@@ -30,7 +30,6 @@ public class TargetDetector : Detector
                 if (((1 << hit.collider.gameObject.layer) & playerLayerMask) != 0)
                 {
                     Debug.DrawRay(transform.position, direction * targetDetectionRange, Color.magenta);
-                    Debug.Log("Player detected");
                     colliders = new List<Transform>() { playerTransform };
                 }
                 else
